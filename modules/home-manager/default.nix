@@ -32,6 +32,42 @@ in {
       slack
       spotify
     ];
+
+    file = {
+      fishconfig = {
+        source = ../../dotfiles/config.fish.symlink;
+        target = ".config/fish/config.fish";
+      };
+      fishplugins = {
+        source = ../../dotfiles/fish_plugins.symlink;
+        target = ".config/fish/fish_plugins";
+      };
+      gitignore = {
+        source = ../../dotfiles/gitignore.symlink;
+        target = ".gitignore";
+      };
+      gitconfig = {
+        source = ../../dotfiles/gitconfig.symlink;
+        target = ".gitconfig";
+      };
+      spacemacs = {
+        source = ../../dotfiles/spacemacs.symlink;
+        target = ".spacemacs";
+      };
+      tmux = {
+        source = ../../dotfiles/tmux.conf.symlink;
+        target = ".tmux.conf";
+      };
+      vimrc = {
+        source = ../../dotfiles/vimrc.symlink;
+        target = ".vimrc";
+      };
+      lein = {
+        source = ../../dotfiles/lein.symlink;
+        target = ".lein";
+        recursive = true;
+      };
+    };
   };
 
   programs = {
