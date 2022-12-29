@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# pull latest dotfiles
+git submodule update --init
+
 if command -v nix >/dev/null; then
     echo "nix is already installed on this system."
 else
