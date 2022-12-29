@@ -24,7 +24,10 @@
     in {
       homeConfigurations.akshaykarle =
         home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { inherit system; };
+          pkgs = import nixpkgs {
+            inherit system;
+            config = { allowUnfree = true; };
+          };
           modules = [ ./modules/home-manager ];
           extraSpecialArgs = { inherit self inputs nixpkgs; };
         };
@@ -35,7 +38,7 @@
           inherit system;
           modules = [
             home-manager.nixosModules.home-manager
-            { home-manager.users.akshaykarle = import ./modules/home; }
+            { home-manager.users.akshaykarle = import ./modules/home-manager; }
           ];
           specialArgs = { inherit self inputs nixpkgs; };
         };

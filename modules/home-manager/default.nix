@@ -21,6 +21,8 @@ in {
       poetry
       pre-commit
       ripgrep
+      slack
+      spotify
     ];
   };
 
