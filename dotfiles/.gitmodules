@@ -1,0 +1,3 @@
+[submodule "rbenv.symlink"]
+	path = rbenv.symlink
+	url = https://github.com/sstephenson/rbenv.git

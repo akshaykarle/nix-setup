@@ -1,0 +1,45 @@
+
+[core]
+excludesfile = ~/.gitignore
+	editor = /usr/local/bin/vim
+
+[hub]
+protocol = https
+[user]
+	name = Akshay Karle
+	email = 1443108+akshaykarle@users.noreply.github.com
+
+[alias]
+  st=status
+  di=diff -M --submodule
+  dc=diff --cached -M --submodule
+  co=checkout
+  l=log --pretty=format:'%Cblue %d %Creset %cd %Cred %h %Cgreen %aN %Creset %s' --color --graph --all --date=short
+  br=branch
+  supdate = submodule update --remote --merge
+  gone = ! "git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
+
+[color]
+	ui = true
+[push]
+	default = current
+[merge]
+	defaultToUpstream = true
+[help]
+	autocorrect = 3
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[magithub]
+	online = false
+[magithub "status"]
+	includeStatusHeader = false
+	includePullRequestsSection = false
+	includeIssuesSection = false
+[pull]
+	ff = only
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[init]
+	defaultBranch = main
