@@ -7,20 +7,29 @@ in {
     stateVersion = "22.11";
 
     packages = with pkgs; [
+      # standard toolset
       coreutils-full
-      clojure
       curl
-      docker
-      emacs
       gawk
       git
+      ripgrep
+
+      # helpful tools
+      docker
+      openvpn
       nixfmt
       nixpkgs-fmt
-      openjdk
-      openvpn
       poetry
       pre-commit
-      ripgrep
+      emacs
+
+      # languages
+      python3
+      ruby
+      clojure
+      openjdk
+
+      # gui apps
       slack
       spotify
     ];
