@@ -1,8 +1,6 @@
 { self, inputs, config, pkgs, ... }:
 let homeDir = "/home/akshaykarle";
 in {
-  nixpkgs.config = { allowUnfree = true; };
-
   home = {
     username = "akshaykarle";
     homeDirectory = "${homeDir}";
@@ -10,11 +8,16 @@ in {
 
     packages = with pkgs; [
       coreutils-full
+      clojure
       curl
+      docker
+      emacs
       gawk
       git
       nixfmt
       nixpkgs-fmt
+      openjdk
+      openvpn
       poetry
       pre-commit
       ripgrep
