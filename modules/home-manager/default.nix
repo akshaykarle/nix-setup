@@ -1,15 +1,7 @@
-{
-  self,
-  inputs,
-  config,
-  pkgs,
-  ...
-}: let
-  homeDir = "/home/akshaykarle";
+{ self, inputs, config, pkgs, ... }:
+let homeDir = "/home/akshaykarle";
 in {
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
+  nixpkgs.config = { allowUnfree = true; };
 
   home = {
     username = "akshaykarle";
@@ -21,6 +13,8 @@ in {
       curl
       gawk
       git
+      nixfmt
+      nixpkgs-fmt
       poetry
       pre-commit
       ripgrep
