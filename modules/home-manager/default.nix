@@ -27,7 +27,6 @@ in {
       python3
       ruby
       clojure
-      openjdk
 
       # gui apps
       slack
@@ -39,6 +38,10 @@ in {
     home-manager = {
       enable = true;
       path = "${homeDir}/.config/nixpkgs/modules/home-manager";
+    };
+    java = {
+      enable = true;
+      package = pkgs.jdk;
     };
     go.enable = true;
     gpg.enable = true;
