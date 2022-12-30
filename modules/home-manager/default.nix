@@ -1,9 +1,11 @@
 { self, inputs, config, pkgs, ... }:
-let homeDir = "/home/akshaykarle";
+let
+  username = "akshaykarle";
+  homeDirectory = "/home/akshaykarle";
+  homeManagerPath = "${homeDirectory}/.config/nixpkgs/modules/home-manager";
 in {
   home = {
-    username = "akshaykarle";
-    homeDirectory = "${homeDir}";
+    inherit username homeDirectory;
     stateVersion = "22.11";
 
     packages = with pkgs; [
@@ -73,7 +75,7 @@ in {
   programs = {
     home-manager = {
       enable = true;
-      path = "${homeDir}/.config/nixpkgs/modules/home-manager";
+      path = "${homeManagerPath}";
     };
     java = {
       enable = true;
