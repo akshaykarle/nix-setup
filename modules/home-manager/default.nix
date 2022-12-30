@@ -4,6 +4,14 @@ let
   homeDirectory = "/home/akshaykarle";
   homeManagerPath = "${homeDirectory}/.config/nixpkgs/modules/home-manager";
 in {
+  # Required to get the fonts installed by home-manager to be picked up by OS.
+  fonts.fontconfig.enable = true;
+
+  # See
+  # https://discourse.nixos.org/t/home-manager-installed-apps-dont-show-up-in-applications-launcher/8523/2
+  # https://github.com/nix-community/home-manager/issues/1439
+  targets.genericLinux.enable = true;
+
   home = {
     inherit username homeDirectory;
     stateVersion = "22.11";
