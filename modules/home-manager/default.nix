@@ -21,6 +21,7 @@ in {
       openvpn
       nixfmt
       nixpkgs-fmt
+      rnix-lsp
       poetry
       pre-commit
       emacs

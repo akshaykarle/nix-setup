@@ -91,7 +91,10 @@ This function should only modify configuration layer settings."
      (version-control :variables
                       version-control-diff-tool 'git-gutter+
                       version-control-global-margin t)
-     yaml)
+     yaml
+     (nixos :variables
+            nix-backend 'lsp
+            nixos-format-on-save t))
 
    ;; List of additional packages that will be installed without being wrapped
    ;; in a layer (generally the packages are installed only and should still be
