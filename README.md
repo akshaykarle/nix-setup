@@ -2,8 +2,10 @@
 
 Setup a machine using [Nix package manager](https://nixos.wiki/wiki/Nix_package_manager).
 
-## getting started
+## Getting Started
 
 Simply run:
 
-   ./install-nix.sh
+```
+./setup.sh
+```
