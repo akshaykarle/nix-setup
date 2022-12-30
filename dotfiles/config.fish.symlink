@@ -1,6 +1,12 @@
 # Set lang
 set -xU LANG en_US.UTF-8
 set -xU LC_ALL en_US.UTF-8
+# need to set LOCALE_ARCHIVE for nix to fix error:
+# bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+# reference- https://github.com/NixOS/nixpkgs/issues/38991
+set -xU LOCALE_ARCHIVE_2_11 "$(nix-build --no-out-link "<nixpkgs>" -A glibcLocales)/lib/locale/locale-archive"
+set -xU LOCALE_ARCHIVE_2_27 "$(nix-build --no-out-link "<nixpkgs>" -A glibcLocales)/lib/locale/locale-archive"
+set -xU LOCALE_ARCHIVE "/usr/bin/locale"
 
 # Remove greeting
 set fish_greeting

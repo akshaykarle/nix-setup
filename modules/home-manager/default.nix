@@ -10,6 +10,7 @@ in {
 
     packages = with pkgs; [
       # standard toolset
+      glibcLocales
       coreutils-full
       curl
       gawk
