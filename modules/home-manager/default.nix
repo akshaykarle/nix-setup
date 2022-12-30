@@ -46,10 +46,6 @@ in {
     ];
 
     file = {
-      fishconfig = {
-        source = ../../dotfiles/config.fish.symlink;
-        target = ".config/fish/config.fish";
-      };
       fishplugins = {
         source = ../../dotfiles/fish_plugins.symlink;
         target = ".config/fish/fish_plugins";
@@ -90,6 +86,37 @@ in {
     java = {
       enable = true;
       package = pkgs.jdk;
+    };
+    fish = {
+      enable = true;
+      shellInit = ''
+        set fish_greeting
+
+        # Source custom scripts
+        if test -e $HOME/.config/fish/custom
+            source $HOME/.config/fish/custom/*.fish
+        end
+
+        # Source secret envs :)
+        if test -e $HOME/.config/fish/secret.fish
+            source $HOME/.config/fish/secret.fish
+        end
+      '';
+      functions = {
+        wifi-password-finder = "security find-generic-password -gwa $1";
+        generate-new-mac-address =
+          "openssl rand -hex 6 | sed 's/(..)/1:/g; s/.$//' | xargs sudo ifconfig $1 ether";
+        global-search-replace =
+          "ack $1 -l --print0 | xargs -0 sed -i '' \"s/$1/$2/g\"";
+      };
+      shellAliases = {
+        g = "git";
+        d = "docker";
+        k = "kubectl";
+        tf = "terraform";
+        gh =
+          "open (git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#http://#' -e 's@com:@com/@')| head -n1";
+      };
     };
     go.enable = true;
     gpg.enable = true;
