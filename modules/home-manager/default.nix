@@ -162,6 +162,10 @@ in {
           "open (git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#http://#' -e 's@com:@com/@')| head -n1";
       };
     };
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
     go.enable = true;
     gpg.enable = true;
     htop.enable = true;
