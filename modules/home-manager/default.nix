@@ -21,28 +21,57 @@ in {
       glibcLocales
       coreutils-full
       curl
+      findutils
+      gnutar
       gawk
       git
+      openssl
       ripgrep
+      unixtools.watch
 
       # helpful tools
       docker
+      nmap
+      ngrok
       openvpn
+      pre-commit
+      tmux
+      tmate
+      terraform
+      virtualbox
+
+      # IDEs & editors
+      emacs
+      dbeaver
+      jetbrains.idea-community
+      vscode
+      vim
+
+      # languages & tools related to them
+      cmake
+      ctags
+      python3
+      poetry
+      ruby
+      clojure
+      go
+      gotags
+      nodejs
       nixfmt
       nixpkgs-fmt
       rnix-lsp
-      poetry
-      pre-commit
-      emacs
 
-      # languages
-      python3
-      ruby
-      clojure
+      # databases
+      postgresql
 
       # gui apps
+      _1password-gui
+      brave
+      libreoffice-fresh
+      signald
       slack
       spotify
+      vlc
     ];
 
     file = {
