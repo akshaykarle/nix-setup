@@ -51,6 +51,7 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-sort-by-usage t)
      (clojure :variables
               ;; clojure-enable-sayid t ;; enable clojure debugger
+              clojure-backend 'lsp
               clojure-enable-fancify-symbols t
               clojure-enable-clj-refactor t)
      elixir

@@ -54,6 +54,7 @@ in {
       poetry
       ruby
       clojure
+      clojure-lsp
       go
       gotags
       nodejs
