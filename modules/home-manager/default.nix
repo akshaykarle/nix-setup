@@ -1,25 +1,14 @@
-{ self, inputs, config, pkgs, ... }:
-let
-  username = "akshaykarle";
-  homeDirectory = "/home/akshaykarle";
-  homeManagerPath = "${homeDirectory}/.config/nixpkgs/modules/home-manager";
-in {
+{ self, inputs, config, pkgs, ... }: {
   # Required to get the fonts installed by home-manager to be picked up by OS.
   fonts.fontconfig.enable = true;
 
-  # See
-  # https://discourse.nixos.org/t/home-manager-installed-apps-dont-show-up-in-applications-launcher/8523/2
-  # https://github.com/nix-community/home-manager/issues/1439
-  targets.genericLinux.enable = true;
-
   home = {
-    inherit username homeDirectory;
     stateVersion = "22.11";
 
     packages = with pkgs; [
       # standard toolset
-      glibcLocales
-      coreutils-full
+      # glibcLocales
+      # coreutils-full
       curl
       findutils
       gnutar
@@ -38,7 +27,6 @@ in {
       tmux
       tmate
       terraform
-      virtualbox
 
       # IDEs & editors
       emacs
@@ -67,12 +55,7 @@ in {
 
       # gui apps
       _1password-gui
-      brave
-      libreoffice-fresh
-      signald
       slack
-      spotify
-      vlc
     ];
 
     file = {
@@ -106,27 +89,12 @@ in {
         recursive = true;
       };
     };
-
-    # temp fix as nix installer puts symlinks outside of XDG_DATA_DIRS and desktop files need to be executable in /nix/store
-    # References: https://old.reddit.com/r/Ubuntu/comments/hh1eh9/ubuntu_refuses_to_run_thirdparty_desktop_files/fw7yv0e/
-    # Copied from: https://github.com/nix-community/home-manager/issues/1439#issuecomment-1106208294
-    activation = {
-      linkDesktopApplications = {
-        after = [ "writeBoundary" "createXdgUserDirectories" ];
-        before = [ ];
-        data = ''
-          rm -rf ${config.xdg.dataHome}/"applications/home-manager"
-          mkdir -p ${config.xdg.dataHome}/"applications/home-manager"
-          cp -Lr ${homeDirectory}/.nix-profile/share/applications/* ${config.xdg.dataHome}/"applications/home-manager/"
-        '';
-      };
-    };
   };
 
   programs = {
     home-manager = {
       enable = true;
-      path = "${homeManagerPath}";
+      # path = "$HOME/.config/nixpkgs/modules/home-manager";
     };
     java = {
       enable = true;
@@ -142,7 +110,7 @@ in {
             source $HOME/.config/fish/custom/*.fish
         end
 
-        # Source secret envs :)
+        # Source secret envs :
         if test -e $HOME/.config/fish/secret.fish
             source $HOME/.config/fish/secret.fish
         end
@@ -172,6 +140,5 @@ in {
     htop.enable = true;
     jq.enable = true;
     less.enable = true;
-    man.enable = true;
   };
 }

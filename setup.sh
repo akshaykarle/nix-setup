@@ -20,8 +20,17 @@ ln -sf $(pwd) $HOME/.config/nixpkgs
 # install home-manager
 nix-channel --add https://github.com/nix-community/home-manager/archive/release-22.11.tar.gz home-manager
 nix-channel --update
-export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
-nix-shell '<home-manager>' -A install
 
-# build and activate config from flake
-home-manager switch --flake '.#akshaykarle'
+if [ -n "$(uname | grep 'Darwin')" ]
+then
+    nix build .#darwinConfigurations.akshaykarle.system
+
+    # build and activate config from flake
+    ./result/sw/bin/darwin-rebuild switch --flake '.#akshaykarle'
+else
+    export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
+    nix-shell '<home-manager>' -A install
+
+    # build and activate config from flake
+    home-manager switch --flake '.#akshaykarle'
+fi

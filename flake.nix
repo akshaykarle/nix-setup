@@ -20,28 +20,26 @@
   };
 
   outputs = inputs@{ self, darwin, home-manager, nixpkgs, ... }:
-    let system = "x86_64-linux";
-    in {
-      homeConfigurations.akshaykarle =
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            inherit system;
-            config = { allowUnfree = true; };
-          };
-          modules = [ ./modules/home-manager ];
-          extraSpecialArgs = { inherit self inputs nixpkgs; };
+  {
+    homeConfigurations.akshaykarle =
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config = import ./modules/config.nix;
         };
-
-      # reference https://nix-community.github.io/home-manager/index.html#sec-flakes-nixos-module
-      nixosConfigurations = {
-        hostname = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            home-manager.nixosModules.home-manager
-            { home-manager.users.akshaykarle = import ./modules/home-manager; }
-          ];
-          specialArgs = { inherit self inputs nixpkgs; };
-        };
+        modules = [ ./modules/home-manager ];
+        extraSpecialArgs = { inherit self inputs nixpkgs; };
       };
-    };
+
+    # reference https://nix-community.github.io/home-manager/index.html#sec-install-nix-darwin-module
+    darwinConfigurations.akshaykarle =
+      darwin.lib.darwinSystem {
+        system = "x86_64-darwin";
+        modules = [
+          home-manager.darwinModules.home-manager
+          ./modules/darwin
+        ];
+        specialArgs = { inherit self inputs nixpkgs; };
+      };
+  };
 }
