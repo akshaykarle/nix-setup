@@ -597,6 +597,9 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
           ("gnu"      . 1)
           ("jcs-elpa" . 0))
   )
+
+  (setq openai-key (getenv "OPENAI_API_KEY"))
+  (setq openai-user (getenv "OPENAI_USER_ID"))
 )
 
 
