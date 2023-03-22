@@ -20,6 +20,7 @@
 
       # helpful tools
       docker
+      colima # docker alternative for osx
       nmap
       ngrok
       openvpn
