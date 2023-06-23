@@ -104,7 +104,11 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(codegpt)
+   dotspacemacs-additional-packages
+   '((copilot :location (recipe
+                         :fetcher github
+                         :repo "zerolfx/copilot.el"
+                         :files ("*.el" "dist"))))
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -595,13 +599,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
         '(("spacelpa" . 8)
           ("melpa"    . 4)
           ("nongnu"   . 2)
-          ("gnu"      . 1)
-          ("jcs-elpa" . 0))
-  )
+          ("gnu"      . 1))))
 
-  (setq openai-key (getenv "OPENAI_API_KEY"))
-  (setq openai-user (getenv "OPENAI_USER_ID"))
-)
 
 
 (defun dotspacemacs/user-load ()
@@ -617,9 +616,9 @@ dump."
 This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
-before packages are loaded."
-  (add-to-list 'package-archives '( "jcs-elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/") t)
-)
+before packages are loaded.")
+
+
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
