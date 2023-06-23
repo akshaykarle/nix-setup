@@ -616,7 +616,15 @@ dump."
 This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
-before packages are loaded.")
+before packages are loaded."
+  (with-eval-after-load 'copilot
+    (define-key copilot-completion-map (kbd "C-c M-c") 'copilot-complete)
+    (define-key copilot-completion-map (kbd "M-c") 'copilot-clear-overlay)
+    (define-key copilot-completion-map (kbd "M-p") 'copilot-previous-completion)
+    (define-key copilot-completion-map (kbd "M-n") 'copilot-next-completion)
+    (define-key copilot-completion-map (kbd "M-<tab>") 'copilot-accept-completion-by-word)
+    (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion))
+)
 
 
 
