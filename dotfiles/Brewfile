@@ -118,3 +118,5 @@ cask 'slack'
 cask 'zoom'
 cask 'openoffice'
 cask 'notion'
+
+cask 'corsair-icue'
