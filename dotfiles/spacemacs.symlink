@@ -43,6 +43,7 @@ This function should only modify configuration layer settings."
      rust
      shell-scripts
      (python :variables python-test-runner 'pytest)
+     ipython-notebook
      haskell
      nginx
      sql
