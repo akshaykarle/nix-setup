@@ -3,7 +3,7 @@
 
   inputs = {
     # package repos
-    stable.url = "github:nixos/nixpkgs/nixos-22.11";
+    stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     small.url = "github:nixos/nixpkgs/nixos-unstable-small";

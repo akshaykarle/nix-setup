@@ -18,7 +18,7 @@ fi
 ln -sf $(pwd) $HOME/.config/nixpkgs
 
 # install home-manager
-nix-channel --add https://github.com/nix-community/home-manager/archive/release-22.11.tar.gz home-manager
+nix-channel --add https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz home-manager
 nix-channel --update
 
 if [ -n "$(uname | grep 'Darwin')" ]
