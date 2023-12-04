@@ -19,27 +19,36 @@
     };
   };
 
-  outputs = inputs@{ self, darwin, home-manager, nixpkgs, ... }:
-  {
-    homeConfigurations.akshaykarle =
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "x86_64-linux";
-          config = import ./modules/config.nix;
-        };
-        modules = [ ./modules/home-manager ];
-        extraSpecialArgs = { inherit self inputs nixpkgs; };
+  outputs = inputs@{ self, darwin, home-manager, nixpkgs, ... }: {
+    homeConfigurations.akshaykarle = home-manager.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        config = import ./modules/config.nix;
       };
+      modules = [
+        ./modules/home-manager
+        {
+          home = {
+            username = "akshaykarle";
+            homeDirectory = "/home/akshaykarle";
+          };
+        }
+      ];
+      extraSpecialArgs = { inherit self inputs nixpkgs; };
+    };
+
+    nixosConfigurations.akshaykarle = {
+      system = "x86_64-linux";
+      modules =
+        [ home-manager.nixosModules.home-manager ./modules/home-manager ];
+      specialArgs = { inherit self inputs nixpkgs; };
+    };
 
     # reference https://nix-community.github.io/home-manager/index.html#sec-install-nix-darwin-module
-    darwinConfigurations.akshaykarle =
-      darwin.lib.darwinSystem {
-        system = "x86_64-darwin";
-        modules = [
-          home-manager.darwinModules.home-manager
-          ./modules/darwin
-        ];
-        specialArgs = { inherit self inputs nixpkgs; };
-      };
+    darwinConfigurations.akshaykarle = darwin.lib.darwinSystem {
+      system = "x86_64-darwin";
+      modules = [ home-manager.darwinModules.home-manager ./modules/darwin ];
+      specialArgs = { inherit self inputs nixpkgs; };
+    };
   };
 }
