@@ -7,6 +7,7 @@
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     small.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # system management
     darwin = {
@@ -39,8 +40,13 @@
 
     nixosConfigurations.akshaykarle = {
       system = "x86_64-linux";
-      modules =
-        [ home-manager.nixosModules.home-manager ./modules/home-manager ];
+      modules = [
+        home-manager.nixosModules.home-manager
+        ./modules/home-manager
+        inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+        inputs.nixos-hardware.nixosModules.common-cpu-amd
+        inputs.nixos-hardware.nixosModules.common-laptop-ssd
+      ];
       specialArgs = { inherit self inputs nixpkgs; };
     };
 
