@@ -43,6 +43,7 @@
       modules = [
         home-manager.nixosModules.home-manager
         ./modules/home-manager
+        ./modules/linux
         inputs.nixos-hardware.nixosModules.common-gpu-nvidia
         inputs.nixos-hardware.nixosModules.common-cpu-amd
         inputs.nixos-hardware.nixosModules.common-laptop-ssd
