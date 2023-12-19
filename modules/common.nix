@@ -15,5 +15,5 @@
     extraSpecialArgs = { inherit self inputs; };
   };
 
-  programs = { man.enable = true; };
+  programs = { man.enable = true; fish.enable = true; };
 }
