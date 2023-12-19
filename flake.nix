@@ -38,15 +38,19 @@
       extraSpecialArgs = { inherit self inputs nixpkgs; };
     };
 
-    nixosConfigurations.akshaykarle = {
+    nixosConfigurations.akshaykarle = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         home-manager.nixosModules.home-manager
-        ./modules/home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.akshaykarle =
+            import ./modules/home-manager/default.nix;
+        }
         ./modules/linux
         inputs.nixos-hardware.nixosModules.common-gpu-nvidia
         inputs.nixos-hardware.nixosModules.common-cpu-amd
-        inputs.nixos-hardware.nixosModules.common-laptop-ssd
       ];
       specialArgs = { inherit self inputs nixpkgs; };
     };
