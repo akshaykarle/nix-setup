@@ -60,6 +60,22 @@
     ];
 
     file = {
+      vundle = {
+        source = builtins.fetchGit {
+          url = "https://github.com/gmarik/Vundle.vim";
+          rev = "0765c5c4f485fa111f190e2d7dd89ec9f5b3f554";
+        };
+        target = ".vim/bundle/Vundle.vim";
+        recursive = true;
+      };
+      emacs_d = {
+        source = builtins.fetchGit {
+          url = "https://github.com/syl20bnr/spacemacs";
+          rev = "8f7019340ec38c2cd70df37739a0adf77ff1e788";
+        };
+        target = ".emacs.d";
+        recursive = true;
+      };
       fishplugins = {
         source = ../../dotfiles/fish_plugins.symlink;
         target = ".config/fish/fish_plugins";
