@@ -57,6 +57,8 @@
       # gui apps
       _1password-gui
       slack
+      brave
+      zoom-us
     ];
 
     file = {

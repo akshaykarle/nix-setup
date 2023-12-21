@@ -1,1 +1,1 @@
-{ pkgs, ... }: { imports = [ ../common.nix ./core.nix ]; }
+{ pkgs, ... }: { imports = [ ./core.nix ]; }

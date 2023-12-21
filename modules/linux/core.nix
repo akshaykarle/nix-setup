@@ -1,6 +1,7 @@
 { self, inputs, config, pkgs, ... }: {
   environment = {
     systemPackages = with pkgs; [
+      gnumake
       glibcLocales
       coreutils-full
       virtualbox

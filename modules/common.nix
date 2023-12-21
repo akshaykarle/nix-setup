@@ -3,6 +3,7 @@
 
   users.users.akshaykarle = {
     description = "Akshay Karle";
+    isNormalUser = true;
     home =
       "${if pkgs.stdenvNoCC.isDarwin then "/Users" else "/home"}/akshaykarle";
     shell = pkgs.fish;
@@ -15,5 +16,8 @@
     extraSpecialArgs = { inherit self inputs; };
   };
 
-  programs = { man.enable = true; fish.enable = true; };
+  programs = {
+    man.enable = true;
+    fish.enable = true;
+  };
 }
