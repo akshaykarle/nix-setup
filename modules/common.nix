@@ -1,5 +1,5 @@
 { self, inputs, config, pkgs, ... }: {
-  imports = [ ./nixpkgs.nix ];
+  imports = [ ./primaryUser.nix ./nixpkgs.nix ];
 
   user = {
     description = "Akshay Karle";
@@ -9,11 +9,14 @@
     shell = pkgs.fish;
   };
 
+  hm = { imports = [ ./home-manager ]; };
+
+  # let nix manage home-manager profiles and use global nixpkgs
   home-manager = {
+    extraSpecialArgs = { inherit self inputs; };
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.akshaykarle = import ./home-manager;
-    extraSpecialArgs = { inherit self inputs; };
+    backupFileExtension = "backup";
   };
 
   programs = {

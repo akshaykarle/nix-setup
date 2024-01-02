@@ -99,7 +99,7 @@
       darwinConfigurations = {
         "akshaykarle@x86_64-darwin" = mkDarwinConfig {
           system = "x86_64-darwin";
-          extraModules = [ ./modules/common.nix ];
+          extraModules = [ ./profiles/personal.nix ];
         };
       };
 
@@ -107,7 +107,7 @@
         "akshaykarle@x86_64-linux" = mkNixosConfig {
           system = "x86_64-linux";
           hardwareModules = [ ./modules/hardware/asus.nix ];
-          extraModules = [ ./modules/common.nix ];
+          extraModules = [ ./profiles/personal.nix ];
         };
       };
 
