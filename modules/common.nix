@@ -19,10 +19,9 @@
     backupFileExtension = "backup";
   };
 
-  programs = {
-    man.enable = true;
-    fish.enable = true;
-  };
+  documentation.man.enable = true;
+
+  programs = { fish.enable = true; };
 
   # environment setup
   environment = {
