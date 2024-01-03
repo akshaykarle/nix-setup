@@ -28,9 +28,5 @@ then
     # build and activate config from flake
     ./result/sw/bin/darwin-rebuild switch --flake '.#akshaykarle'
 else
-    export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
-    nix-shell '<home-manager>' -A install
-
-    # build and activate config from flake
-    home-manager switch --flake '.#akshaykarle'
+    sudo nixos-rebuild switch --flake '.#akshaykarle@x86_64-linux'
 fi
