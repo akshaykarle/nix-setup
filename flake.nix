@@ -115,12 +115,10 @@
         "akshaykarle@x86_64-linux" = mkHomeConfig {
           username = "akshaykarle";
           system = "x86_64-linux";
-          extraModules = [ ./modules/home-manager ];
         };
         "akshaykarle@x86_64-darwin" = mkHomeConfig {
           username = "akshaykarle";
           system = "x86_64-darwin";
-          extraModules = [ ./modules/home-manager ];
         };
       };
     };
