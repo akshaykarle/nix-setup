@@ -1,8 +1,6 @@
 { self, inputs, config, pkgs, ... }: {
 
-  imports = [
-   ../common.nix
-  ];
+  imports = [ ../common.nix ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -94,13 +92,6 @@
       glibcLocales
       coreutils-full
       virtualbox
-
-      # gui apps
-      signald
-      brave
-      libreoffice-fresh
-      spotify
-      vlc
     ];
   };
 

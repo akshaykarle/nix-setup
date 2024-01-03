@@ -7,8 +7,6 @@
 
     packages = with pkgs; [
       # standard toolset
-      # glibcLocales
-      # coreutils-full
       curl
       findutils
       gnutar
@@ -56,8 +54,12 @@
 
       # gui apps
       _1password-gui
-      slack
       brave
+      libreoffice-fresh
+      signald
+      slack
+      spotify
+      vlc
       zoom-us
     ];
 
