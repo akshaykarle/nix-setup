@@ -8,12 +8,15 @@
     packages = with pkgs; [
       # standard toolset
       curl
+      diffutils
       findutils
       gnutar
       gawk
       git
+      jq
       openssl
       ripgrep
+      wget
       unixtools.watch
 
       # helpful tools

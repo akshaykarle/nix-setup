@@ -25,25 +25,11 @@
 
   # environment setup
   environment = {
-    systemPackages = with pkgs; [
-      # editors
-      vim
-      emacs
-
-      # standard toolset
-      coreutils-full
-      findutils
-      diffutils
-      curl
-      wget
-      git
-      jq
-
-      # helpful shell stuff
-      bat
-      fzf
-      ripgrep
-    ];
+    systemPackages = with pkgs;
+      [
+        # standard toolset
+        coreutils-full
+      ];
     etc = {
       home-manager.source = "${inputs.home-manager}";
       nixpkgs.source = "${inputs.nixpkgs}";
