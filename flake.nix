@@ -44,7 +44,7 @@
       mkNixosConfig = { system ? "x86_64-linux", nixpkgs ? inputs.nixos-unstable
         , hardwareModules, baseModules ? [
           home-manager.nixosModules.home-manager
-          ./modules/linux
+          ./modules/nixos
         ], extraModules ? [ ], }:
         nixpkgs.lib.nixosSystem {
           inherit system;
