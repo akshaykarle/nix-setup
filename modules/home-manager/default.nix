@@ -59,6 +59,7 @@
       _1password-gui
       brave
       libreoffice-fresh
+      obsidian
       signald
       slack
       spotify
