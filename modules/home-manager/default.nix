@@ -54,6 +54,7 @@
 
       # databases
       postgresql
+      sqlite # needed for z and other cli tools
 
       # gui apps
       _1password-gui
