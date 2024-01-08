@@ -41,9 +41,9 @@
   hardware.nvidia = {
     # PCI-Express Runtime D3 Power Management is enabled by default on this laptop
     # But it can fix screen tearing & suspend/resume screen corruption in sync mode
-    modesetting.enable = lib.mkDefault true;
+    modesetting.enable = true;
     # Enable DRM kernel mode setting
-    powerManagement.enable = lib.mkDefault true;
+    powerManagement.enable = true;
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
     powerManagement.finegrained = false;
@@ -72,5 +72,5 @@
     };
   };
 
-  services = { asusd.enable = lib.mkDefault true; };
+  services = { asusd.enable = true; };
 }
