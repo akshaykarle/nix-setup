@@ -65,6 +65,8 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     prime = {
+      sync.enable = true;
+
       amdgpuBusId = "PCI:8:0:0";
       nvidiaBusId = "PCI:1:0:0";
     };
