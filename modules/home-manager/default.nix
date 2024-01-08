@@ -60,7 +60,7 @@
       brave
       libreoffice-fresh
       obsidian
-      signald
+      signal-desktop
       slack
       spotify
       vlc
