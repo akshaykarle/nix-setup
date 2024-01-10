@@ -23,11 +23,11 @@
       isDarwin = system:
         (builtins.elem system inputs.nixpkgs.lib.platforms.darwin);
       homePrefix = system: if isDarwin system then "/Users" else "/home";
-      defaultSystems = [ "x86_64-darwin" "x86_64-linux" ];
+      defaultSystems = [ "aarch64-darwin" "x86_64-linux" ];
 
       # generate a base darwin configuration with the
       # specified hostname, overlays, and any extraModules applied
-      mkDarwinConfig = { system ? "x86_64-darwin", nixpkgs ? inputs.nixpkgs
+      mkDarwinConfig = { system ? "aarch64-darwin", nixpkgs ? inputs.nixpkgs
         , baseModules ? [
           home-manager.darwinModules.home-manager
           ./modules/darwin
@@ -85,19 +85,16 @@
       };
     in {
       checks = { } // (mkChecks {
-        arch = "x86_64";
-        os = "darwin";
-      }) // (mkChecks {
         arch = "aarch64";
-        os = "linux";
+        os = "darwin";
       }) // (mkChecks {
         arch = "x86_64";
         os = "linux";
       });
 
       darwinConfigurations = {
-        "akshaykarle@x86_64-darwin" = mkDarwinConfig {
-          system = "x86_64-darwin";
+        "akshaykarle@aarch64-darwin" = mkDarwinConfig {
+          system = "aarch64-darwin";
           extraModules = [ ./profiles/personal.nix ];
         };
       };
@@ -115,9 +112,9 @@
           username = "akshaykarle";
           system = "x86_64-linux";
         };
-        "akshaykarle@x86_64-darwin" = mkHomeConfig {
+        "akshaykarle@aarch64-darwin" = mkHomeConfig {
           username = "akshaykarle";
-          system = "x86_64-darwin";
+          system = "aarch64-darwin";
         };
       };
     };
