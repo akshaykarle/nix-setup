@@ -32,7 +32,7 @@
           home-manager.darwinModules.home-manager
           ./modules/darwin
         ], extraModules ? [ ], }:
-        inputs.darwin.lib.darwinSystem {
+        darwin.lib.darwinSystem {
           inherit system;
           modules = baseModules ++ extraModules;
           specialArgs = { inherit self inputs nixpkgs; };
