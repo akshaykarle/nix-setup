@@ -73,12 +73,23 @@
           modules = baseModules ++ extraModules;
         };
 
-      mkChecks = { arch, os, username ? "akshaykarle", }: {
+      mkChecks = {
+        arch,
+          os,
+          username ? "akshaykarle",
+      }: {
         "${arch}-${os}" = {
-          "${username}_${os}" = (if os == "darwin" then
-            self.darwinConfigurations
-          else
-            self.nixosConfigurations)."${username}@${arch}-${os}".config.system.build.toplevel;
+          "${username}_${os}" =
+            (
+              if os == "darwin"
+              then self.darwinConfigurations
+              else self.nixosConfigurations
+            )
+              ."${username}@${arch}-${os}"
+              .config
+              .system
+              .build
+              .toplevel;
           "${username}_home" =
             self.homeConfigurations."${username}@${arch}-${os}".activationPackage;
         };
@@ -89,10 +100,17 @@
         os = "darwin";
       }) // (mkChecks {
         arch = "x86_64";
+        os = "darwin";
+      }) // (mkChecks {
+        arch = "x86_64";
         os = "linux";
       });
 
       darwinConfigurations = {
+        "akshaykarle@x86_64-darwin" = mkDarwinConfig {
+          system = "x86_64-darwin";
+          extraModules = [ ./profiles/personal.nix ];
+        };
         "akshaykarle@aarch64-darwin" = mkDarwinConfig {
           system = "aarch64-darwin";
           extraModules = [ ./profiles/personal.nix ];
@@ -111,6 +129,10 @@
         "akshaykarle@x86_64-linux" = mkHomeConfig {
           username = "akshaykarle";
           system = "x86_64-linux";
+        };
+        "akshaykarle@x86_64-darwin" = mkHomeConfig {
+          username = "akshaykarle";
+          system = "x86_64-darwin";
         };
         "akshaykarle@aarch64-darwin" = mkHomeConfig {
           username = "akshaykarle";
