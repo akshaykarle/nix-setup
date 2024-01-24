@@ -92,6 +92,10 @@
       glibcLocales
       coreutils-full
       virtualbox
+      brave
+      libreoffice-fresh
+      signal-desktop
+      vlc
     ];
   };
 

@@ -58,13 +58,9 @@
 
       # gui apps
       _1password-gui
-      brave
-      libreoffice-fresh
       obsidian
-      signal-desktop
       slack
       spotify
-      vlc
       zoom-us
     ];
 
