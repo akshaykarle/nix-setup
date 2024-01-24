@@ -23,10 +23,7 @@ nix-channel --update
 
 if [ -n "$(uname | grep 'Darwin')" ]
 then
-    nix build .#darwinConfigurations.akshaykarle.system
-
-    # build and activate config from flake
-    ./result/sw/bin/darwin-rebuild switch --flake '.#akshaykarle'
+    nix run nix-darwin -- switch --flake  '.#akshaykarle@x86_64-darwin'
 else
     sudo nixos-rebuild switch --flake '.#akshaykarle@x86_64-linux'
 fi
