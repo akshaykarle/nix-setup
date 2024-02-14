@@ -37,6 +37,7 @@
     casks = [
       "brave-browser"
       "flycut"
+      "iterm2"
       "openoffice"
       "signal"
       "spectacle"
