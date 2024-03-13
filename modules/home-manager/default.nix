@@ -50,7 +50,6 @@
       nodejs
       nixfmt
       nixpkgs-fmt
-      rnix-lsp
 
       # databases
       postgresql
