@@ -80,10 +80,6 @@
         target = ".emacs.d";
         recursive = true;
       };
-      fishplugins = {
-        source = ../../dotfiles/fish_plugins.symlink;
-        target = ".config/fish/fish_plugins";
-      };
       gitignore = {
         source = ../../dotfiles/gitignore.symlink;
         target = ".gitignore";
@@ -123,6 +119,24 @@
     };
     fish = {
       enable = true;
+      plugins = with pkgs.fishPlugins; [
+        {
+          name = "bass";
+          src = bass.src;
+        }
+        {
+          name = "colored-man-pages";
+          src = colored-man-pages.src;
+        }
+        {
+          name = "done";
+          src = done.src;
+        }
+        {
+          name = "z";
+          src = z.src;
+        }
+      ];
       shellInit = ''
         set fish_greeting
 
