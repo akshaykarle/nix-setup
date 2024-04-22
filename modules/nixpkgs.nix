@@ -29,7 +29,11 @@
           id = "nixpkgs";
           type = "indirect";
         };
-        flake = inputs.nixpkgs;
+        to = {
+          id = "nixpkgs";
+          type = "indirect";
+        };
+        flake = inputs.stable;
       };
       stable = {
         from = {
