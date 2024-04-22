@@ -21,9 +21,11 @@ ln -sf $(pwd) $HOME/.config/nixpkgs
 nix-channel --add https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz home-manager
 nix-channel --update
 
+NIX_CMD="${1:-switch}"
+
 if [ -n "$(uname | grep 'Darwin')" ]
 then
-    nix run nix-darwin -- switch --flake  '.#akshaykarle@x86_64-darwin'
+    nix run nix-darwin -- $NIX_CMD --flake  '.#akshaykarle@x86_64-darwin'
 else
-    sudo nixos-rebuild switch --flake '.#akshaykarle@x86_64-linux'
+    sudo nixos-rebuild $NIX_CMD --flake .#"akshaykarle@x86_64-linux"
 fi
