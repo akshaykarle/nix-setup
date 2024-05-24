@@ -26,6 +26,11 @@
       "wget"
       # required for fish- https://github.com/franciscolourenco/done
       "terminal-notifier"
+      {
+        name = "emacs-plus";
+        start_service = true;
+        args = [ "with-spacemacs-icon" "with-native-comp"];
+      }
     ];
 
     taps = [
@@ -33,6 +38,7 @@
       "homebrew/cask-fonts"
       "homebrew/cask-versions"
       "homebrew/services"
+      "d12frosted/emacs-plus"
     ];
     casks = [
       "brave-browser"
