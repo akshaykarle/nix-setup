@@ -25,6 +25,7 @@
       nmap
       ngrok
       openvpn
+      postman
       pre-commit
       tmux
       tmate
