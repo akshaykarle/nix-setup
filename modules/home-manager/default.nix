@@ -33,7 +33,7 @@
 
       # IDEs & editors
       emacs
-      dbeaver
+      dbeaver-bin
       jetbrains.idea-community
       vscode
       vim
