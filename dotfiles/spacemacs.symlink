@@ -96,7 +96,8 @@ This function should only modify configuration layer settings."
      yaml
      (nixos :variables
             nix-backend 'lsp
-            nixos-format-on-save t))
+            nixos-format-on-save t)
+     openai)
 
    ;; List of additional packages that will be installed without being wrapped
    ;; in a layer (generally the packages are installed only and should still be
@@ -633,6 +634,8 @@ before packages are loaded."
     (define-key copilot-completion-map (kbd "M-n") 'copilot-next-completion)
     (define-key copilot-completion-map (kbd "M-<tab>") 'copilot-accept-completion-by-word)
     (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion))
+    (setq openai-key (getenv "OPENAI_API_KEY"))
+    (setq openai-user "nixos-rog")
 )
 
 
