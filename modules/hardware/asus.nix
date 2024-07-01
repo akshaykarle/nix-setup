@@ -28,11 +28,8 @@
     lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   # configure nvidia driver based on: https://nixos.wiki/wiki/Nvidia
-  # Enable OpenGL
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
   };
 
   # Load nvidia driver for Xorg and Wayland
