@@ -12,6 +12,10 @@
       max-jobs = 8;
       trusted-users = [ "${config.user.name}" "root" "@admin" "@wheel" ];
     };
+    optimise = {
+      automatic = true;
+      dates = [ "weekly" ];
+    };
     gc = {
       automatic = true;
       options = "--delete-older-than 30d";
