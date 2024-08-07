@@ -30,6 +30,7 @@
       tmux
       tmate
       terraform
+      postman
 
       # IDEs & editors
       emacs

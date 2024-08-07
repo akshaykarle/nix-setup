@@ -29,6 +29,7 @@
       [
         # standard toolset
         coreutils-full
+        emacs
       ];
     etc = {
       home-manager.source = "${inputs.home-manager}";
