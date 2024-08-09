@@ -2,9 +2,9 @@
   homebrew = {
     enable = true;
     onActivation = {
-        autoUpdate = true;
-        # cleanup = "zap"; # Uninstall all programs not declared
-        upgrade = true;
+      autoUpdate = true;
+      cleanup = "zap"; # Uninstall all programs not declared
+      upgrade = true;
     };
     global = {
       brewfile = true;
