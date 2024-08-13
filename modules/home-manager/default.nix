@@ -69,7 +69,7 @@
       vundle = {
         source = builtins.fetchGit {
           url = "https://github.com/gmarik/Vundle.vim";
-          rev = "0765c5c4f485fa111f190e2d7dd89ec9f5b3f554";
+          rev = "5548a1a937d4e72606520c7484cd384e6c76b565";
         };
         target = ".vim/bundle/Vundle.vim";
         recursive = true;
@@ -77,7 +77,7 @@
       emacs_d = {
         source = builtins.fetchGit {
           url = "https://github.com/syl20bnr/spacemacs";
-          rev = "a58a7d79b3713bcf693bb61d9ba83d650a6aba86";
+          rev = "ec74a24d6ad1ed74917f6eed32136715781e3f37";
         };
         target = ".emacs.d";
         recursive = true;
