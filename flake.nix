@@ -3,8 +3,7 @@
 
   inputs = {
     # package repos
-    stable.url = "github:nixos/nixpkgs/nixos-23.11";
-    nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    stable.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # system management
@@ -40,7 +39,7 @@
 
       # generate a base nixos configuration with the
       # specified overlays, hardware modules, and any extraModules applied
-      mkNixosConfig = { system ? "x86_64-linux", nixpkgs ? inputs.nixos-unstable
+      mkNixosConfig = { system ? "x86_64-linux", nixpkgs ? inputs.stable
         , hardwareModules, baseModules ? [
           home-manager.nixosModules.home-manager
           ./modules/nixos
