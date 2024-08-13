@@ -14,7 +14,7 @@
     };
     optimise = {
       automatic = true;
-      interval = { Weekday = 0; Hour = 0; Minute = 0; };
+      dates = [ "weekly" ];
     };
     gc = {
       automatic = true;
