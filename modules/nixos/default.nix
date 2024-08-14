@@ -96,6 +96,8 @@
       libreoffice-fresh
       signal-desktop
       vlc
+      dropbox
+      keybase-gui
     ];
   };
 

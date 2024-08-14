@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   homebrew = {
     enable = true;
     onActivation = {
@@ -6,9 +6,7 @@
       cleanup = "zap"; # Uninstall all programs not declared
       upgrade = true;
     };
-    global = {
-      brewfile = true;
-    };
+    global = { brewfile = true; };
     brews = [
       "coreutils"
       "rg"
@@ -34,7 +32,7 @@
       {
         name = "emacs-plus";
         start_service = true;
-        args = [ "with-spacemacs-icon" "with-native-comp"];
+        args = [ "with-spacemacs-icon" "with-native-comp" ];
       }
     ];
 
@@ -47,8 +45,10 @@
     ];
     casks = [
       "brave-browser"
+      "dropbox"
       "flycut"
       "iterm2"
+      "keybase"
       "openoffice"
       "signal"
       "spectacle"
