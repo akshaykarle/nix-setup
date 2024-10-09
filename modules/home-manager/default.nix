@@ -61,7 +61,7 @@
       go
       gotags
       nodejs
-      nixfmt
+      nixfmt-rfc-style
       nixpkgs-fmt
 
       # databases
