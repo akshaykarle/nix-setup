@@ -4,7 +4,7 @@ if command -v nix >/dev/null; then
     echo "nix is already installed on this system."
 else
     curl -L https://nixos.org/nix/install | sh
-    source ~/.nix-profile/etc/profile.d/nix.sh
+    source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 fi
 
 # enable running flake
@@ -25,6 +25,7 @@ NIX_CMD="${1:-switch}"
 
 if [ -n "$(uname | grep 'Darwin')" ]
 then
+    which brew > /dev/null || bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     nix run nix-darwin -- $NIX_CMD --flake  '.#akshaykarle@x86_64-darwin'
 else
     sudo nixos-rebuild $NIX_CMD --flake .#"akshaykarle@x86_64-linux"
