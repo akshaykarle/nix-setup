@@ -73,5 +73,8 @@
     };
   };
 
+  # enable GPU pass-through for docker Nvidia: https://nixos.wiki/wiki/Docker
+  hardware.nvidia-container-toolkit.enable = true;
+
   services = { asusd.enable = true; };
 }

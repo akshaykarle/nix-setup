@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
 
   imports = [ ../common.nix ];
 
@@ -67,6 +68,9 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # Enable docker daemon: https://nixos.wiki/wiki/Docker
+  virtualisation.docker.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -76,10 +80,12 @@
     users = {
       "${config.user.name}" = {
         isNormalUser = true;
-        extraGroups =
-          [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
-        hashedPassword =
-          "$6$CJWhmoVMcH4T85FG$NXBIWLfmY2NN7cXdZH6QRYXu2meA1yznUTN5oiAjUCIL9kn7jzJkREA8.5/28EL1.AYT61Ui6FB1y..c5zYi6.";
+        extraGroups = [
+          "wheel"
+          "networkmanager"
+          "docker"
+        ]; # Enable ‘sudo’ for the user.
+        hashedPassword = "$6$CJWhmoVMcH4T85FG$NXBIWLfmY2NN7cXdZH6QRYXu2meA1yznUTN5oiAjUCIL9kn7jzJkREA8.5/28EL1.AYT61Ui6FB1y..c5zYi6.";
       };
     };
   };
