@@ -38,8 +38,6 @@
 
     taps = [
       "homebrew/bundle"
-      "homebrew/cask-fonts"
-      "homebrew/cask-versions"
       "homebrew/services"
       "d12frosted/emacs-plus"
     ];
