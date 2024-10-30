@@ -1,17 +1,27 @@
-{ self, inputs, config, pkgs, ... }: {
+{
+  self,
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
+{
   # Required to get the fonts installed by home-manager to be picked up by OS.
   fonts.fontconfig.enable = true;
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
-    "ngrok"
-    "postman"
-    "terraform"
-    "vscode"
-    "obsidian"
-    "slack"
-    "spotify"
-    "zoom"
-  ];
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (pkgs.lib.getName pkg) [
+      "ngrok"
+      "postman"
+      "terraform"
+      "vscode"
+      "obsidian"
+      "slack"
+      "1password"
+      "spotify"
+      "zoom"
+    ];
 
   home = {
     stateVersion = "23.11";
@@ -42,37 +52,26 @@
       tmate
       terraform
       postman
+      nix-output-monitor
 
       # IDEs & editors
       emacs
       dbeaver-bin
-      jetbrains.idea-community
+      jetbrains.idea-community-bin
       vscode
       vim
 
       # languages & tools related to them
       cmake
       ctags
-      python3
-      poetry
-      ruby
-      clojure
-      clojure-lsp
-      go
-      gotags
-      nodejs
       nixfmt-rfc-style
       nixpkgs-fmt
-
-      # databases
-      postgresql
-      sqlite # needed for z and other cli tools
 
       # gui apps
       _1password-gui
       obsidian
-      slack
       spotify
+      slack
       zoom-us
     ];
 
@@ -165,18 +164,15 @@
       '';
       functions = {
         wifi-password-finder = "security find-generic-password -gwa $1";
-        generate-new-mac-address =
-          "openssl rand -hex 6 | sed 's/(..)/1:/g; s/.$//' | xargs sudo ifconfig $1 ether";
-        global-search-replace =
-          "ack $1 -l --print0 | xargs -0 sed -i '' \"s/$1/$2/g\"";
+        generate-new-mac-address = "openssl rand -hex 6 | sed 's/(..)/1:/g; s/.$//' | xargs sudo ifconfig $1 ether";
+        global-search-replace = "ack $1 -l --print0 | xargs -0 sed -i '' \"s/$1/$2/g\"";
       };
       shellAliases = {
         g = "git";
         d = "docker";
         k = "kubectl";
         tf = "terraform";
-        gh =
-          "open (git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#http://#' -e 's@com:@com/@')| head -n1";
+        gh = "open (git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#http://#' -e 's@com:@com/@')| head -n1";
       };
     };
     direnv = {
