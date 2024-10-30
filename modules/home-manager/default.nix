@@ -50,7 +50,6 @@
       pre-commit
       tmux
       tmate
-      terraform
       postman
       nix-output-monitor
 
