@@ -105,6 +105,7 @@
       vlc
       dropbox
       keybase-gui
+      _1password-gui
     ];
   };
 

@@ -58,7 +58,6 @@
       nixpkgs-fmt
 
       # gui apps
-      _1password-gui
       spotify
       slack
       zoom-us
