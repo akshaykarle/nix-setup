@@ -52,6 +52,7 @@
       tmate
       postman
       nix-output-monitor
+      tailscale
 
       # IDEs & editors
       emacs
