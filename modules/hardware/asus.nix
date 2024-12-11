@@ -24,15 +24,13 @@
   networking.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode =
-    lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   # configure nvidia driver based on: https://nixos.wiki/wiki/Nvidia
   # Enable OpenGL
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   # Load nvidia driver for Xorg and Wayland
@@ -66,7 +64,10 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     prime = {
-      sync.enable = true;
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
 
       amdgpuBusId = "PCI:8:0:0";
       nvidiaBusId = "PCI:1:0:0";
@@ -76,5 +77,7 @@
   # enable GPU pass-through for docker Nvidia: https://nixos.wiki/wiki/Docker
   hardware.nvidia-container-toolkit.enable = true;
 
-  services = { asusd.enable = true; };
+  services = {
+    asusd.enable = true;
+  };
 }

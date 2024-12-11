@@ -30,17 +30,23 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+
+    # Configure keymap in X11
+    xkb.layout = "gb";
+    xkb.variant = "";
+  };
+  # Enable touchpad support.
+  services.libinput.enable = true;
+
+  # Enable the KDE Desktop Environment.
+  services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "gb";
-    variant = "";
-  };
+  # services.displayManager.gdm.enable = true;
+  # services.desktopManager.gnome.enable = true;
 
   # Configure console keymap
   console.keyMap = "uk";
@@ -49,7 +55,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -64,9 +69,6 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Enable docker daemon: https://nixos.wiki/wiki/Docker
   virtualisation.docker.enable = true;
