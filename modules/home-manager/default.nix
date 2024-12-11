@@ -13,10 +13,6 @@
     pkg:
     builtins.elem (pkgs.lib.getName pkg) [
       "ngrok"
-      "postman"
-      "terraform"
-      "vscode"
-      "obsidian"
       "slack"
       "1password"
       "spotify"
@@ -45,20 +41,14 @@
       colima # docker alternative for osx
       nmap
       ngrok
-      openvpn
-      postman
       pre-commit
       tmux
       tmate
-      postman
       nix-output-monitor
       tailscale
 
       # IDEs & editors
       emacs
-      dbeaver-bin
-      jetbrains.idea-community-bin
-      vscode
       vim
 
       # languages & tools related to them
@@ -69,7 +59,6 @@
 
       # gui apps
       _1password-gui
-      obsidian
       spotify
       slack
       zoom-us
