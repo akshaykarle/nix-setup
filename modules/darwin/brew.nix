@@ -56,7 +56,7 @@
       "keybase"
       "openoffice"
       "signal"
-      "spectacle"
+      "rectangle"
       "steam"
       "vlc"
     ];
