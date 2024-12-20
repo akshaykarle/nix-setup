@@ -142,11 +142,11 @@
       darwinConfigurations = {
         "akshaykarle@x86_64-darwin" = mkDarwinConfig {
           system = "x86_64-darwin";
-          extraModules = [ ./profiles/personal.nix ];
+          extraModules = [ ./profiles/darwin.nix ];
         };
         "akshaykarle@aarch64-darwin" = mkDarwinConfig {
           system = "aarch64-darwin";
-          extraModules = [ ./profiles/personal.nix ];
+          extraModules = [ ./profiles/darwin.nix ];
         };
       };
 
