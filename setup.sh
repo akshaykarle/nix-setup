@@ -23,10 +23,14 @@ nix-channel --update
 
 NIX_CMD="${1:-switch}"
 
-if [ -n "$(uname | grep 'Darwin')" ]
+if [ -n "$(uname -a | grep 'Darwin' | grep 'x86_64')" ]
 then
     which brew > /dev/null || bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     nix run nix-darwin -- $NIX_CMD --flake  '.#akshaykarle@x86_64-darwin'
+elif [ -n "$(uname -a | grep 'Darwin' | grep 'arm64')" ]
+then
+    which brew > /dev/null || bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    nix run nix-darwin -- $NIX_CMD --flake  '.#akshaykarle@aarch64-darwin'
 else
     sudo nixos-rebuild $NIX_CMD --flake .#"akshaykarle@x86_64-linux"
 fi
