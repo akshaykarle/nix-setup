@@ -149,6 +149,9 @@
         if test -e $HOME/.config/fish/secret.fish
             source $HOME/.config/fish/secret.fish
         end
+
+        # Add homebrew to the PATH:
+        eval "$(/opt/homebrew/bin/brew shellenv)"
       '';
       functions = {
         wifi-password-finder = "security find-generic-password -gwa $1";
