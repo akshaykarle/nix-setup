@@ -12,6 +12,7 @@
       AppleShowAllExtensions = true;
       FXEnableExtensionChangeWarning = true;
       _FXShowPosixPathInTitle = true;
+      ShowStatusBar = true;
     };
 
     # trackpad settings
@@ -59,7 +60,7 @@
       # allow key repeat
       ApplePressAndHoldEnabled = false;
       # delay before repeating keystrokes
-      InitialKeyRepeat = 5;
+      InitialKeyRepeat = 13;
       # delay between repeated keystrokes upon holding a key
       KeyRepeat = 1;
       AppleShowAllExtensions = true;
