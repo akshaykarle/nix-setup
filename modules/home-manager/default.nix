@@ -45,6 +45,7 @@
       tmux
       tmate
       nix-output-monitor
+      aider-chat # oss pythonic coding assistant
       tailscale
 
       # IDEs & editors
