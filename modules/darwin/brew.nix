@@ -48,17 +48,50 @@
       "d12frosted/emacs-plus"
     ];
     casks = [
-      "1password"
-      "brave-browser"
-      "dropbox"
-      "flycut"
-      "iterm2"
-      "keybase"
-      "openoffice"
-      "signal"
-      "rectangle"
-      "steam"
-      "vlc"
+      {
+        name = "1password";
+        greedy = true;
+      }
+      {
+        name = "brave-browser";
+        greedy = true;
+      }
+      {
+        name = "dropbox";
+        greedy = true;
+      }
+      {
+        name = "flycut";
+        greedy = true;
+      }
+      {
+        name = "iterm2";
+        greedy = true;
+      }
+      {
+        name = "keybase";
+        greedy = true;
+      }
+      {
+        name = "openoffice";
+        greedy = true;
+      }
+      {
+        name = "signal";
+        greedy = true;
+      }
+      {
+        name = "rectangle";
+        greedy = true;
+      }
+      {
+        name = "steam";
+        greedy = true;
+      }
+      {
+        name = "vlc";
+        greedy = true;
+      }
     ];
   };
 }
