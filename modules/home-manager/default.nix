@@ -5,6 +5,9 @@
   pkgs,
   ...
 }:
+let
+  unstable = inputs.unstable.legacyPackages.${pkgs.system};
+in
 {
   # Required to get the fonts installed by home-manager to be picked up by OS.
   fonts.fontconfig.enable = true;
@@ -47,7 +50,7 @@
       nix-output-monitor
       tailscale
       ollama
-      aider-chat # oss pythonic coding assistant
+      unstable.aider-chat # oss pythonic coding assistant
 
       # IDEs & editors
       emacs
