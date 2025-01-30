@@ -5,6 +5,7 @@
     # package repos
     stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # system management
     darwin = {
@@ -23,6 +24,7 @@
       darwin,
       home-manager,
       nixpkgs,
+      unstable,
       ...
     }@inputs:
     let
