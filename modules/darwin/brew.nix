@@ -48,6 +48,7 @@
       "d12frosted/emacs-plus"
     ];
     casks = [
+      # Security-focused apps - keep updated
       {
         name = "1password";
         greedy = true;
@@ -57,41 +58,21 @@
         greedy = true;
       }
       {
-        name = "dropbox";
-        greedy = true;
-      }
-      {
-        name = "flycut";
-        greedy = true;
-      }
-      {
-        name = "iterm2";
-        greedy = true;
-      }
-      {
         name = "keybase";
-        greedy = true;
-      }
-      {
-        name = "openoffice";
         greedy = true;
       }
       {
         name = "signal";
         greedy = true;
       }
-      {
-        name = "rectangle";
-        greedy = true;
-      }
-      {
-        name = "steam";
-        greedy = true;
-      }
-      {
-        name = "vlc";
-        greedy = true;
-      }
+      # Standard apps - manual updates preferred
+      "dropbox"
+      "flycut"
+      "iterm2"
+      "openoffice"
+      "rectangle"
+      "steam"
+      "vlc"
     ];
   };
 }
