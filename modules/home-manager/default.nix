@@ -3,11 +3,9 @@
   inputs,
   config,
   pkgs,
+  unstable,
   ...
 }:
-let
-  unstable = inputs.unstable.legacyPackages.${pkgs.system};
-in
 {
   # Required to get the fonts installed by home-manager to be picked up by OS.
   fonts.fontconfig.enable = true;
