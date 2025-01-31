@@ -101,7 +101,6 @@
           pkgs = import nixpkgs { inherit system; };
           extraSpecialArgs = {
             inherit self inputs nixpkgs;
-            unstable = import inputs.unstable { inherit system; };
           };
           modules = baseModules ++ extraModules;
         };
