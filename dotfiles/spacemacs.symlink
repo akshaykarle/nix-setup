@@ -96,8 +96,7 @@ This function should only modify configuration layer settings."
      yaml
      (nixos :variables
             nix-backend 'lsp
-            nixos-format-on-save t)
-     openai)
+            nixos-format-on-save t))
 
    ;; List of additional packages that will be installed without being wrapped
    ;; in a layer (generally the packages are installed only and should still be
@@ -109,11 +108,7 @@ This function should only modify configuration layer settings."
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
    '(
-     (direnv)
-     (copilot :location (recipe
-                         :fetcher github
-                         :repo "zerolfx/copilot.el"
-                         :files ("*.el" "dist"))))
+     (direnv))
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -627,15 +622,6 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (direnv-mode)
-  (with-eval-after-load 'copilot
-    (define-key copilot-completion-map (kbd "C-c M-c") 'copilot-complete)
-    (define-key copilot-completion-map (kbd "M-c") 'copilot-clear-overlay)
-    (define-key copilot-completion-map (kbd "M-p") 'copilot-previous-completion)
-    (define-key copilot-completion-map (kbd "M-n") 'copilot-next-completion)
-    (define-key copilot-completion-map (kbd "M-<tab>") 'copilot-accept-completion-by-word)
-    (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion))
-    (setq openai-key (getenv "OPENAI_API_KEY"))
-    (setq openai-user "nixos-rog")
 )
 
 
