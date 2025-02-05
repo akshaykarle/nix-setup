@@ -27,8 +27,7 @@
       SecondClickThreshold = 1;
       # don't allow positional right click
       TrackpadRightClick = false;
-      # three finger drag for space switching
-      # TrackpadThreeFingerDrag = true;
+      TrackpadThreeFingerDrag = true;
     };
 
     # firewall settings
@@ -65,6 +64,7 @@
       KeyRepeat = 1;
       AppleShowAllExtensions = true;
       AppleShowScrollBars = "Automatic";
+      "com.apple.trackpad.enableSecondaryClick" = true;
     };
   };
 
