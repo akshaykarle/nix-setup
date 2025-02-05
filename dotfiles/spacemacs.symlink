@@ -38,13 +38,11 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     (csharp :variables csharp-backend 'omnisharp)
      typescript
      rust
      shell-scripts
      (python :variables python-test-runner 'pytest)
      ipython-notebook
-     haskell
      nginx
      sql
      csv
@@ -78,7 +76,6 @@ This function should only modify configuration layer settings."
                  javascript-import-tool 'import-js
                  javascript-fmt-tool 'web-beautify)
      react
-     vue
      markdown
      neotree
      (org :variables
