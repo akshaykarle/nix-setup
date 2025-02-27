@@ -49,6 +49,7 @@ in
       tmate
       nix-output-monitor
       tailscale
+      gitbutler
       ollama
       unstable.aider-chat # oss pythonic coding assistant
 
