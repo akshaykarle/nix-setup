@@ -156,7 +156,9 @@ in
         end
 
         # Add homebrew to the PATH:
-        eval "$(/opt/homebrew/bin/brew shellenv)"
+        if test -e /opt/homenrew/bin/brew
+            eval "$(/opt/homebrew/bin/brew shellenv)"
+        end
       '';
       functions = {
         wifi-password-finder = "security find-generic-password -gwa $1";
