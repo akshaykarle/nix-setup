@@ -31,6 +31,9 @@ elif [ -n "$(uname -a | grep 'Darwin' | grep 'arm64')" ]
 then
     which brew > /dev/null || bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     nix run nix-darwin -- $NIX_CMD --flake  '.#akshaykarle@aarch64-darwin'
+elif [ -n "$(uname -a | grep 'daksh-home')" ]
+then
+    sudo nixos-rebuild $NIX_CMD --flake .#"daksh-home@x86_64-linux"
 else
     sudo nixos-rebuild $NIX_CMD --flake .#"akshaykarle@x86_64-linux"
 fi
