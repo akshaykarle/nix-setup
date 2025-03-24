@@ -37,6 +37,10 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp0s20f0u2.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 8123 ];
+  };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
