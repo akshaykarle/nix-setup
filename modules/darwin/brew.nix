@@ -37,7 +37,6 @@
         start_service = true;
         args = [
           "with-spacemacs-icon"
-          "with-native-comp"
         ];
       }
     ];
