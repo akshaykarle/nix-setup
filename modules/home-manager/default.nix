@@ -51,6 +51,7 @@ in
       tailscale
       ollama
       unstable.aider-chat # oss pythonic coding assistant
+      visidata
 
       # IDEs & editors
       emacs
