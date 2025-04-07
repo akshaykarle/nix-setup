@@ -50,7 +50,7 @@ in
       nix-output-monitor
       tailscale
       ollama
-      unstable.aider-chat # oss pythonic coding assistant
+      unstable.aider-chat-full
       visidata
 
       # IDEs & editors
