@@ -72,6 +72,7 @@ This function should only modify configuration layer settings."
      ;; npm install -g import-js
      ;; npm install -g tern
      (javascript :variables
+                 js2-basic-offset 2
                  js-indent-level 2
                  javascript-import-tool 'import-js
                  javascript-fmt-tool 'web-beautify)
