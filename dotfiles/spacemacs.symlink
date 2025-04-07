@@ -38,7 +38,6 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     typescript
      rust
      shell-scripts
      (python :variables python-test-runner 'pytest)
@@ -76,6 +75,7 @@ This function should only modify configuration layer settings."
                  js-indent-level 2
                  javascript-import-tool 'import-js
                  javascript-fmt-tool 'web-beautify)
+     (typescript :variables typescript-indent-level 2)
      react
      markdown
      neotree
