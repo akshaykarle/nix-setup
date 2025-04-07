@@ -65,6 +65,7 @@
         greedy = true;
       }
       # Standard apps - manual updates preferred
+      "android-studio"
       "dropbox"
       "flycut"
       "iterm2"
