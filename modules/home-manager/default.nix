@@ -54,7 +54,7 @@ in
       visidata
 
       # IDEs & editors
-      emacs
+      (if pkgs.stdenv.isDarwin then emacs.override { withNativeCompilation = false; } else emacs)
       vim
 
       # languages & tools related to them
