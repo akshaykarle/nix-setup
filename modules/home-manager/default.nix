@@ -157,7 +157,7 @@ in
         end
 
         # Add homebrew to the PATH:
-        if test -e /opt/homenrew/bin/brew
+        if test -e /opt/homebrew/bin/brew
             eval "$(/opt/homebrew/bin/brew shellenv)"
         end
       '';
