@@ -30,10 +30,6 @@
     let
       isDarwin = system: (builtins.elem system inputs.nixpkgs.lib.platforms.darwin);
       homePrefix = system: if isDarwin system then "/Users" else "/home";
-      defaultSystems = [
-        "aarch64-darwin"
-        "x86_64-linux"
-      ];
 
       # generate a base darwin configuration with the
       # specified hostname, overlays, and any extraModules applied
