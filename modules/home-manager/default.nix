@@ -6,7 +6,17 @@
   ...
 }:
 let
-  unstable = inputs.unstable.legacyPackages.${pkgs.system};
+  unstable = import inputs.unstable {
+    system = pkgs.system;
+    config = {
+      allowUnfree = false;
+      allowUnfreePredicate =
+        pkg:
+        builtins.elem (pkgs.lib.getName pkg) [
+          "claude-code"
+        ];
+    };
+  };
 in
 {
   # Required to get the fonts installed by home-manager to be picked up by OS.
@@ -50,7 +60,8 @@ in
       nix-output-monitor
       tailscale
       ollama
-      unstable.aider-chat-full
+      unstable.aider-chat
+      unstable.claude-code
       visidata
 
       # IDEs & editors
