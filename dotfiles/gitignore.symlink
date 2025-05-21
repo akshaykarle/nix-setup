@@ -1,3 +1,8 @@
 *.swp
-.aider*
 .direnv
+.dir-locals.el
+
+# AI related
+.aider*
+CLAUDE.md
+coding-instructions/
