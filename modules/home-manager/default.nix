@@ -60,7 +60,7 @@ in
       nix-output-monitor
       tailscale
       ollama
-      unstable.aider-chat
+      unstable.aider-chat-full
       unstable.claude-code
       visidata
 
@@ -92,7 +92,7 @@ in
       emacs_d = {
         source = builtins.fetchGit {
           url = "https://github.com/syl20bnr/spacemacs";
-          rev = "bc90e8e28240288bd512ce48d7871bd8f11e5b26";
+          rev = "75ccc99ef79a8da17f8be3a9891359043c5f5371";
         };
         target = ".emacs.d";
         recursive = true;
