@@ -14,9 +14,11 @@
     };
   };
 
+  # add current user as primaryUser while nix-darwin migrates to system-wide activation
+  system.primaryUser = config.user.name;
+
   # auto manage nixbld users with nix darwin
   nix = {
-    configureBuildUsers = false;
     nixPath = [
       "darwin=/etc/${config.environment.etc.darwin.target}"
       "nixpkgs=/etc/${config.environment.etc.nixpkgs.target}"
@@ -27,10 +29,7 @@
     '';
   };
 
-  security.pam.enableSudoTouchIdAuth = true;
-
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   system.stateVersion = 5;
 
