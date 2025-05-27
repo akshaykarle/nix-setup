@@ -18,7 +18,7 @@ fi
 ln -sf $(pwd) $HOME/.config/nixpkgs
 
 # install home-manager
-nix-channel --add https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz home-manager
+nix-channel --add https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz home-manager
 nix-channel --update
 
 NIX_CMD="${1:-switch}"
