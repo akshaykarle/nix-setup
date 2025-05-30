@@ -4,5 +4,6 @@
 
 # AI related
 .aider*
-CLAUDE.md
+.claude
+CLAUDE.local.md
 coding-instructions/
