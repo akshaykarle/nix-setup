@@ -92,7 +92,7 @@ in
       emacs_d = {
         source = builtins.fetchGit {
           url = "https://github.com/syl20bnr/spacemacs";
-          rev = "9aad8a0c6585cf8d500a905938ac96608c2a48ad";
+          rev = "3f87c5c3f2d857ec691af35d59db34d623be0596";
         };
         target = ".emacs.d";
         recursive = true;
