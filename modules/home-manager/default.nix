@@ -60,7 +60,6 @@ in
       nix-output-monitor
       tailscale
       ollama
-      unstable.aider-chat-full
       unstable.claude-code
       visidata
 
