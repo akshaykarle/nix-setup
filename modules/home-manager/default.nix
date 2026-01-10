@@ -54,12 +54,10 @@ in
       colima # docker alternative for osx
       nmap
       ngrok
-      pre-commit
       tmux
       tmate
       nix-output-monitor
       tailscale
-      ollama
       unstable.claude-code
       visidata
 
