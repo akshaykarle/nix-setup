@@ -182,6 +182,9 @@ in
         k = "kubectl";
         tf = "terraform";
         gh = "open (git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#http://#' -e 's@com:@com/@')| head -n1";
+        claude-personal = "CLAUDE_CONFIG_DIR=~/.claude-personal claude";
+        claude-sahaj = "CLAUDE_CONFIG_DIR=~/.claude-sahaj claude";
+        claude-client = "CLAUDE_CONFIG_DIR=~/.claude-client claude";
       };
     };
     direnv = {
