@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "nixos": {
+      "timeout": 60,
+      "command": "nix",
+      "args": [
+        "run",
+        "github:utensils/mcp-nixos",
+        "--"
+      ],
+      "transportType": "stdio"
+    }
+  }
+}
