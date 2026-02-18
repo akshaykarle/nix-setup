@@ -119,6 +119,52 @@ in
         target = ".lein";
         recursive = true;
       };
+      claude-personal-statusline = {
+        source = ../../dotfiles/claude-statusline.sh;
+        target = ".claude-personal/statusline-command.sh";
+        executable = true;
+      };
+      claude-personal-settings = {
+        target = ".claude-personal/settings.json";
+        text = builtins.toJSON {
+          statusLine = {
+            type = "command";
+            command = "${config.home.homeDirectory}/.claude-personal/statusline-command.sh";
+          };
+        };
+      };
+      claude-sahaj-statusline = {
+        source = ../../dotfiles/claude-statusline.sh;
+        target = ".claude-sahaj/statusline-command.sh";
+        executable = true;
+      };
+      claude-sahaj-settings = {
+        target = ".claude-sahaj/settings.json";
+        text = builtins.toJSON {
+          statusLine = {
+            type = "command";
+            command = "${config.home.homeDirectory}/.claude-sahaj/statusline-command.sh";
+          };
+        };
+      };
+      claude-client-statusline = {
+        source = ../../dotfiles/claude-statusline.sh;
+        target = ".claude-client/statusline-command.sh";
+        executable = true;
+      };
+      claude-client-settings = {
+        target = ".claude-client/settings.json";
+        text = builtins.toJSON {
+          enabledPlugins = {
+            "csharp-lsp@claude-plugins-official" = true;
+          };
+          alwaysThinkingEnabled = true;
+          statusLine = {
+            type = "command";
+            command = "${config.home.homeDirectory}/.claude-client/statusline-command.sh";
+          };
+        };
+      };
     };
   };
 
