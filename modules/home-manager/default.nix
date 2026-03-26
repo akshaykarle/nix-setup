@@ -59,6 +59,7 @@ in
       nix-output-monitor
       tailscale
       unstable.claude-code
+      claude-monitor
       visidata
 
       # IDEs & editors
