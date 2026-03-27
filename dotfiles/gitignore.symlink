@@ -4,6 +4,6 @@
 
 # AI related
 .aider*
-.claude
 CLAUDE.local.md
-coding-instructions/
+ai-local/
+.claude/*.local.json
