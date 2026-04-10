@@ -22,16 +22,6 @@ in
   # Required to get the fonts installed by home-manager to be picked up by OS.
   fonts.fontconfig.enable = true;
 
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (pkgs.lib.getName pkg) [
-      "ngrok"
-      "slack"
-      "1password"
-      "spotify"
-      "zoom"
-    ];
-
   home = {
     stateVersion = "23.11";
 
