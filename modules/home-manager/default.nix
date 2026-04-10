@@ -7,7 +7,7 @@
 }:
 let
   unstable = import inputs.unstable {
-    system = pkgs.system;
+    system = pkgs.stdenv.hostPlatform.system;
     config = {
       allowUnfree = false;
       allowUnfreePredicate =
