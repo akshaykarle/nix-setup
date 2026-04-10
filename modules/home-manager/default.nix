@@ -41,7 +41,7 @@ in
 
       # helpful tools
       docker
-      colima # docker alternative for osx
+      unstable.colima # docker alternative for osx, use unstable for newer lima
       nmap
       ngrok
       tmux
