@@ -69,6 +69,7 @@
       "dropbox"
       "flycut"
       "iterm2"
+      "ngrok"
       "openoffice"
       "rectangle"
       "steam"

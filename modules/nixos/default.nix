@@ -105,6 +105,7 @@
       vlc
       dropbox
       keybase-gui
+      ngrok
       _1password-gui
     ];
   };

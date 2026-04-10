@@ -43,7 +43,6 @@ in
       docker
       unstable.colima # docker alternative for osx, use unstable for newer lima
       nmap
-      ngrok
       tmux
       tmate
       nix-output-monitor
