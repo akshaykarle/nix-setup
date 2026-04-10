@@ -225,6 +225,13 @@ in
     direnv = {
       enable = true;
       nix-direnv.enable = true;
+      package = pkgs.direnv.overrideAttrs (old: {
+        checkPhase = ''
+          runHook preCheck
+          make test-go test-bash test-zsh
+          runHook postCheck
+        '';
+      });
     };
     go.enable = true;
     gpg.enable = true;
