@@ -49,6 +49,7 @@ in
       tailscale
       unstable.claude-code
       claude-monitor
+      unstable.pi-coding-agent
       visidata
 
       # IDEs & editors
