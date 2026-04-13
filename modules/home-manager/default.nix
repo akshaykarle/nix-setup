@@ -111,8 +111,8 @@ in
         recursive = true;
       };
       claude-personal-statusline = {
-        source = ../../dotfiles/claude-statusline.sh;
-        target = ".claude-personal/statusline-command.sh";
+        source = ../../dotfiles/claude-statusline.fish;
+        target = ".claude-personal/statusline-command.fish";
         executable = true;
       };
       claude-personal-settings = {
@@ -120,13 +120,13 @@ in
         text = builtins.toJSON {
           statusLine = {
             type = "command";
-            command = "${config.home.homeDirectory}/.claude-personal/statusline-command.sh";
+            command = "${config.home.homeDirectory}/.claude-personal/statusline-command.fish";
           };
         };
       };
       claude-sahaj-statusline = {
-        source = ../../dotfiles/claude-statusline.sh;
-        target = ".claude-sahaj/statusline-command.sh";
+        source = ../../dotfiles/claude-statusline.fish;
+        target = ".claude-sahaj/statusline-command.fish";
         executable = true;
       };
       claude-sahaj-settings = {
@@ -134,13 +134,13 @@ in
         text = builtins.toJSON {
           statusLine = {
             type = "command";
-            command = "${config.home.homeDirectory}/.claude-sahaj/statusline-command.sh";
+            command = "${config.home.homeDirectory}/.claude-sahaj/statusline-command.fish";
           };
         };
       };
       claude-client-statusline = {
-        source = ../../dotfiles/claude-statusline.sh;
-        target = ".claude-client/statusline-command.sh";
+        source = ../../dotfiles/claude-statusline.fish;
+        target = ".claude-client/statusline-command.fish";
         executable = true;
       };
       claude-client-settings = {
@@ -152,7 +152,7 @@ in
           alwaysThinkingEnabled = true;
           statusLine = {
             type = "command";
-            command = "${config.home.homeDirectory}/.claude-client/statusline-command.sh";
+            command = "${config.home.homeDirectory}/.claude-client/statusline-command.fish";
           };
         };
       };
