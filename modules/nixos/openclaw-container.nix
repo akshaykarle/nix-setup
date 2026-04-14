@@ -1,4 +1,19 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+let
+  unstablePkgs = import inputs.unstable {
+    system = "x86_64-linux";
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [ "openclaw-2026.4.2" ];
+    };
+  };
+in
 {
   containers.openclaw = {
     autoStart = true;
@@ -18,15 +33,35 @@
       {
         system.stateVersion = "23.11";
 
-        # OpenClaw runs via Docker until a native Nix package is available.
-        # Configure with:
-        #   HASS_SERVER=http://10.233.2.1:8123
-        #   HASS_TOKEN_FILE=/var/lib/openclaw/ha-token
-        virtualisation.docker.enable = true;
+        environment.systemPackages = [ unstablePkgs.openclaw ];
+
+        # OpenClaw systemd service
+        # Configure API keys and HA connection in /var/lib/openclaw/.env
+        systemd.services.openclaw = {
+          description = "OpenClaw AI Agent";
+          after = [ "network.target" ];
+          wantedBy = [ "multi-user.target" ];
+          serviceConfig = {
+            ExecStart = "${unstablePkgs.openclaw}/bin/openclaw";
+            WorkingDirectory = "/var/lib/openclaw";
+            DynamicUser = true;
+            StateDirectory = "openclaw";
+            NoNewPrivileges = true;
+            ProtectSystem = "strict";
+            ProtectHome = true;
+            PrivateDevices = true;
+            PrivateTmp = true;
+            ReadWritePaths = [ "/var/lib/openclaw" ];
+          };
+          environment = {
+            HASS_SERVER = "http://10.233.2.1:8123";
+            HASS_TOKEN_FILE = "/var/lib/openclaw/ha-token";
+          };
+        };
 
         networking = {
           firewall.enable = true;
-          firewall.allowedTCPPorts = [ ];
+          firewall.allowedTCPPorts = [ 18789 ]; # OpenClaw Control UI
           useHostResolvConf = lib.mkForce true;
         };
       };
