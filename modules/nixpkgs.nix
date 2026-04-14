@@ -1,5 +1,14 @@
-{ inputs, config, lib, pkgs, ... }: {
-  nixpkgs = { config = import ./config.nix; };
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  nixpkgs = {
+    config = import ./config.nix;
+  };
 
   nix = {
     package = pkgs.nix;
@@ -10,7 +19,12 @@
     '';
     settings = {
       max-jobs = 8;
-      trusted-users = [ "${config.user.name}" "root" "@admin" "@wheel" ];
+      trusted-users = [
+        "${config.user.name}"
+        "root"
+        "@admin"
+        "@wheel"
+      ];
     };
     optimise = {
       automatic = true;
@@ -20,12 +34,11 @@
       options = "--delete-older-than 30d";
     };
 
-    nixPath = builtins.map
-      (source: "${source}=/etc/${config.environment.etc.${source}.target}") [
-        "home-manager"
-        "nixpkgs"
-        "stable"
-      ];
+    nixPath = builtins.map (source: "${source}=/etc/${config.environment.etc.${source}.target}") [
+      "home-manager"
+      "nixpkgs"
+      "stable"
+    ];
     registry = {
       nixpkgs = {
         from = {

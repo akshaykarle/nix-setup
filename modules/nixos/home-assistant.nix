@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   # Home Assistant — imperative config management initially
   # Existing YAML config is copied to /var/lib/hass and managed manually.

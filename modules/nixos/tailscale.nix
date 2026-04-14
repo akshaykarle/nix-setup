@@ -8,7 +8,10 @@ in
       type = lib.types.listOf lib.types.str;
       default = [ ];
       description = "LAN interfaces to allow SSH access on (in addition to Tailscale)";
-      example = [ "enp1s0" "wlan0" ];
+      example = [
+        "enp1s0"
+        "wlan0"
+      ];
     };
   };
 
