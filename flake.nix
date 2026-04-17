@@ -16,12 +16,19 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # dev tools
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       self,
       darwin,
+      git-hooks,
       home-manager,
       nixpkgs,
       unstable,
@@ -94,11 +101,30 @@
           extraModules ? [ ],
         }:
         inputs.home-manager.lib.homeManagerConfiguration rec {
-          pkgs = import nixpkgs { inherit system; };
+          pkgs = import nixpkgs {
+            inherit system;
+            config = import ./modules/config.nix;
+          };
           extraSpecialArgs = {
             inherit self inputs nixpkgs;
           };
           modules = baseModules ++ extraModules;
+        };
+
+      supportedSystems = [
+        "aarch64-darwin"
+        "x86_64-darwin"
+        "x86_64-linux"
+      ];
+
+      mkPreCommitHooks =
+        system:
+        git-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            nixfmt-rfc-style.enable = true;
+            actionlint.enable = true;
+          };
         };
 
       mkChecks =
@@ -117,25 +143,45 @@
         };
     in
     {
-      checks =
-        { }
-        // (mkChecks {
-          arch = "aarch64";
-          os = "darwin";
-        })
-        // (mkChecks {
-          arch = "x86_64";
-          os = "darwin";
-        })
-        // (mkChecks {
-          arch = "x86_64";
-          os = "linux";
-        })
-        // (mkChecks {
-          arch = "x86_64";
-          os = "linux";
-          username = "daksh-home";
-        });
+      checks = nixpkgs.lib.foldl nixpkgs.lib.recursiveUpdate { } (
+        [
+          (mkChecks {
+            arch = "aarch64";
+            os = "darwin";
+          })
+          (mkChecks {
+            arch = "x86_64";
+            os = "darwin";
+          })
+          (mkChecks {
+            arch = "x86_64";
+            os = "linux";
+          })
+          (mkChecks {
+            arch = "x86_64";
+            os = "linux";
+            username = "daksh-home";
+          })
+        ]
+        ++ map (system: {
+          ${system}.pre-commit = mkPreCommitHooks system;
+        }) supportedSystems
+      );
+
+      devShells = builtins.listToAttrs (
+        map (system: {
+          name = system;
+          value.default =
+            let
+              pkgs = import nixpkgs { inherit system; };
+              pre-commit = mkPreCommitHooks system;
+            in
+            pkgs.mkShell {
+              shellHook = pre-commit.shellHook;
+              buildInputs = pre-commit.enabledPackages;
+            };
+        }) supportedSystems
+      );
 
       darwinConfigurations = {
         "akshaykarle@x86_64-darwin" = mkDarwinConfig {
