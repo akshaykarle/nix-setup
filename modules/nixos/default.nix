@@ -29,49 +29,8 @@
     LC_TIME = "en_GB.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-
-    # Configure keymap in X11
-    xkb.layout = "gb";
-    xkb.variant = "";
-  };
-  # Enable touchpad support.
-  services.libinput.enable = true;
-
-  # Enable the KDE Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  # services.displayManager.gdm.enable = true;
-  # services.desktopManager.gnome.enable = true;
-
   # Configure console keymap
   console.keyMap = "uk";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
-  # Enable docker daemon: https://nixos.wiki/wiki/Docker
-  virtualisation.docker.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -85,8 +44,7 @@
         extraGroups = [
           "wheel"
           "networkmanager"
-          "docker"
-        ]; # Enable ‘sudo’ for the user.
+        ];
         hashedPassword = config.user.hashedPassword;
       };
     };
@@ -100,12 +58,6 @@
       glibcLocales
       coreutils-full
       brave
-      libreoffice-fresh
-      signal-desktop
-      vlc
-      dropbox
-      keybase-gui
-      ngrok
       _1password-gui
     ];
   };
