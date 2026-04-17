@@ -1,23 +1,9 @@
 {
   self,
-  inputs,
   config,
   pkgs,
   ...
 }:
-let
-  unstable = import inputs.unstable {
-    system = pkgs.stdenv.hostPlatform.system;
-    config = {
-      allowUnfree = false;
-      allowUnfreePredicate =
-        pkg:
-        builtins.elem (pkgs.lib.getName pkg) [
-          "claude-code"
-        ];
-    };
-  };
-in
 {
   # Required to get the fonts installed by home-manager to be picked up by OS.
   fonts.fontconfig.enable = true;
@@ -40,17 +26,9 @@ in
       unixtools.watch
 
       # helpful tools
-      docker
-      unstable.colima # docker alternative for osx, use unstable for newer lima
-      nmap
       tmux
-      tmate
       nix-output-monitor
       tailscale
-      unstable.claude-code
-      claude-monitor
-      unstable.pi-coding-agent
-      visidata
 
       # IDEs & editors
       (if pkgs.stdenv.isDarwin then emacs.override { withNativeCompilation = false; } else emacs)
@@ -61,11 +39,6 @@ in
       ctags
       nixfmt-rfc-style
       nixpkgs-fmt
-
-      # gui apps
-      spotify
-      slack
-      zoom-us
     ];
 
     file = {
@@ -248,10 +221,6 @@ in
     home-manager = {
       enable = true;
       # path = "$HOME/.config/nixpkgs/modules/home-manager";
-    };
-    java = {
-      enable = true;
-      package = pkgs.jdk;
     };
     fish = {
       enable = true;

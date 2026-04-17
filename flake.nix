@@ -211,6 +211,7 @@
         "akshaykarle@x86_64-linux" = mkHomeConfig {
           username = "akshaykarle";
           system = "x86_64-linux";
+          extraModules = [ ./modules/home-manager/extras.nix ];
         };
         "daksh-home@x86_64-linux" = mkHomeConfig {
           username = "daksh-home";
@@ -219,10 +220,12 @@
         "akshaykarle@x86_64-darwin" = mkHomeConfig {
           username = "akshaykarle";
           system = "x86_64-darwin";
+          extraModules = [ ./modules/home-manager/extras.nix ];
         };
         "akshaykarle@aarch64-darwin" = mkHomeConfig {
           username = "akshaykarle";
           system = "aarch64-darwin";
+          extraModules = [ ./modules/home-manager/extras.nix ];
         };
       };
     };
