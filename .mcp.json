@@ -5,7 +5,7 @@
       "command": "nix",
       "args": [
         "run",
-        "github:utensils/mcp-nixos",
+        "github:utensils/mcp-nixos/68c272fb930de52502d97aae91d8f7ed7edd9e0e",
         "--"
       ],
       "transportType": "stdio"

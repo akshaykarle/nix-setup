@@ -4,5 +4,7 @@
                   [lein-ancient "0.6.15"]
                   [venantius/yagni "0.1.7"]]
         :dependencies [[nrepl "0.7.0"]]
-        :repl-options {:nrepl-middleware [refactor-nrepl.middleware/wrap-refactor]}}}}
+        :repl-options {:nrepl-middleware [refactor-nrepl.middleware/wrap-refactor]}
+        :repositories [["central" {:url "https://repo1.maven.org/maven2/" :checksum :fail}]
+                       ["clojars" {:url "https://clojars.org/repo/" :checksum :fail}]]}}}
 
