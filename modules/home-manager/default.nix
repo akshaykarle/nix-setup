@@ -157,6 +157,24 @@ in
         };
       };
 
+      # Pi coding agent configuration
+      pi-settings = {
+        target = ".pi/agent/settings.json";
+        text = builtins.toJSON {
+          defaultProvider = "anthropic";
+          defaultModel = "claude-sonnet-4-6";
+          packages = [ "npm:@akshaykarle/pi-tools" ];
+        };
+      };
+      pi-agents-md = {
+        source = ../../dotfiles/pi-agents.md;
+        target = ".pi/agent/AGENTS.md";
+      };
+      pi-sandbox-profile = pkgs.lib.mkIf pkgs.stdenv.isDarwin {
+        source = ../../dotfiles/pi-sandbox.sb;
+        target = ".pi/agent/pi-sandbox.sb";
+      };
+
       # Supply chain security configurations
       npmrc = {
         target = ".npmrc";
@@ -299,6 +317,64 @@ in
         wifi-password-finder = "security find-generic-password -gwa $1";
         generate-new-mac-address = "openssl rand -hex 6 | sed 's/(..)/1:/g; s/.$//' | xargs sudo ifconfig $1 ether";
         global-search-replace = "ack $1 -l --print0 | xargs -0 sed -i '' \"s/$1/$2/g\"";
+        pi-sandboxed = ''
+          # Secret env vars to strip from the pi process
+          set -l secret_vars \
+            ANTHROPIC_API_KEY OPENAI_API_KEY GITHUB_TOKEN GH_TOKEN \
+            AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN \
+            AZURE_NPM_PASSWORD AZURE_NPM_USERNAME ACCERTIFY_NPM_TOKEN \
+            NPM_TOKEN DATABASE_URL PRIVATE_KEY SSH_PRIVATE_KEY \
+            GOOGLE_API_KEY SLACK_TOKEN DISCORD_TOKEN \
+            SENDGRID_API_KEY STRIPE_SECRET_KEY DOPPLER_TOKEN \
+            VAULT_TOKEN TAILSCALE_AUTH_KEY
+
+          if test (uname) = "Linux"
+            set -l bwrap_args \
+              --ro-bind /nix /nix \
+              --ro-bind /etc /etc \
+              --ro-bind /run /run \
+              --dev /dev \
+              --proc /proc \
+              --tmpfs /tmp \
+              --tmpfs $HOME \
+              --bind $HOME/.pi $HOME/.pi \
+              --ro-bind $HOME/.gitconfig $HOME/.gitconfig \
+              --ro-bind $HOME/.gitignore $HOME/.gitignore \
+              --bind (pwd) (pwd) \
+              --chdir (pwd) \
+              --unshare-pid \
+              --new-session \
+              --die-with-parent
+
+            for var in $secret_vars
+              if set -q $var
+                set bwrap_args $bwrap_args --unsetenv $var
+              end
+            end
+
+            exec bwrap $bwrap_args -- pi $argv
+
+          else if test (uname) = "Darwin"
+            set -l env_args
+            for var in $secret_vars
+              if set -q $var
+                set env_args $env_args -u $var
+              end
+            end
+
+            set -l sandbox_profile "$HOME/.pi/agent/pi-sandbox.sb"
+            if test -f $sandbox_profile
+              exec env $env_args sandbox-exec -D "CWD=(pwd)" -f $sandbox_profile pi $argv
+            else
+              echo "WARNING: Seatbelt profile not found, running pi without OS sandbox"
+              exec env $env_args pi $argv
+            end
+
+          else
+            echo "WARNING: No sandbox available on this OS"
+            exec pi $argv
+          end
+        '';
       };
       shellAliases = {
         g = "git";
@@ -309,6 +385,7 @@ in
         claude-personal = "CLAUDE_CONFIG_DIR=~/.claude-personal claude";
         claude-sahaj = "CLAUDE_CONFIG_DIR=~/.claude-sahaj claude";
         claude-client = "CLAUDE_CONFIG_DIR=~/.claude-client claude";
+        pi = "pi-sandboxed";
       };
     };
     direnv = {

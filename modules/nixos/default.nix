@@ -99,6 +99,7 @@
       gnumake
       glibcLocales
       coreutils-full
+      bubblewrap
       brave
       libreoffice-fresh
       signal-desktop
