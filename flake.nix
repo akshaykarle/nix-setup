@@ -101,7 +101,10 @@
           extraModules ? [ ],
         }:
         inputs.home-manager.lib.homeManagerConfiguration rec {
-          pkgs = import nixpkgs { inherit system; };
+          pkgs = import nixpkgs {
+            inherit system;
+            config = import ./modules/config.nix;
+          };
           extraSpecialArgs = {
             inherit self inputs nixpkgs;
           };
