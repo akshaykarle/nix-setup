@@ -57,6 +57,7 @@
       gnumake
       glibcLocales
       coreutils-full
+      bubblewrap
       brave
       _1password-gui
     ];

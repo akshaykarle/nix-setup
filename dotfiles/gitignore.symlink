@@ -7,3 +7,5 @@
 CLAUDE.local.md
 ai-local/
 .claude/*.local.json
+.pi/agent/sessions/
+.pi/agent/pi-debug.log
