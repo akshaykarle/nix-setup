@@ -2,18 +2,39 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
+let
+  unstablePkgs = import inputs.unstable {
+    system = "x86_64-linux";
+    config.allowUnfree = true;
+  };
+in
 {
   # Home Assistant — imperative config management initially
   # Existing YAML config is copied to /var/lib/hass and managed manually.
   # To migrate to declarative: replace `config = null` with a Nix attrset.
   services.home-assistant = {
     enable = true;
+    package = unstablePkgs.home-assistant;
     config = null;
     extraComponents = [
+      "default_config"
+      "google_translate"
       "wyoming"
       "esphome"
+      "roborock"
+      "spotify"
+      "simplisafe"
+      "tado"
+      "webostv"
+      "shelly"
+      "cast"
+      "lg_thinq"
+      "home_connect"
+
+      "mobile_app"
       "met"
       "radio_browser"
     ];
