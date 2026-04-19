@@ -22,7 +22,6 @@ in
       # Enable Tailscale SSH and advertise server tag for ACL targeting
       extraSetFlags = [
         "--ssh"
-        "--advertise-tags=tag:home-server"
       ];
     };
 
