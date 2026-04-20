@@ -59,8 +59,14 @@
       coreutils-full
       bubblewrap
       brave
-      _1password-gui
     ];
+  };
+
+  # 1Password CLI and GUI with polkit/browser integration
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = [ config.user.name ];
   };
 
   # This value determines the NixOS release from which the default
