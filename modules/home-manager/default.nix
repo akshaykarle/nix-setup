@@ -1,5 +1,6 @@
 {
   self,
+  inputs,
   config,
   pkgs,
   ...
@@ -51,18 +52,12 @@
 
     file = {
       vundle = {
-        source = builtins.fetchGit {
-          url = "https://github.com/gmarik/Vundle.vim";
-          rev = "5548a1a937d4e72606520c7484cd384e6c76b565";
-        };
+        source = inputs.vundle;
         target = ".vim/bundle/Vundle.vim";
         recursive = true;
       };
       emacs_d = {
-        source = builtins.fetchGit {
-          url = "https://github.com/syl20bnr/spacemacs";
-          rev = "610d900767b35228b5a2eb79f2a8de9596a5a264";
-        };
+        source = inputs.spacemacs;
         target = ".emacs.d";
         recursive = true;
       };

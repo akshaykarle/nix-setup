@@ -22,6 +22,16 @@
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # editor plugins
+    vundle = {
+      url = "github:gmarik/Vundle.vim";
+      flake = false;
+    };
+    spacemacs = {
+      url = "github:syl20bnr/spacemacs";
+      flake = false;
+    };
   };
 
   outputs =
