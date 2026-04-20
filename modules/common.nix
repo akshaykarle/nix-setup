@@ -3,6 +3,7 @@
   inputs,
   config,
   pkgs,
+  mkUnstablePkgs ? _system: _config: throw "mkUnstablePkgs not provided",
   ...
 }:
 {
@@ -24,7 +25,7 @@
   # let nix manage home-manager profiles and use global nixpkgs
   home-manager = {
     extraSpecialArgs = {
-      inherit self inputs;
+      inherit self inputs mkUnstablePkgs;
     };
     useGlobalPkgs = true;
     useUserPackages = true;

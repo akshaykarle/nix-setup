@@ -40,6 +40,16 @@
 
       # generate a base darwin configuration with the
       # specified hostname, overlays, and any extraModules applied
+      mkUnstablePkgs =
+        system: extraConfig:
+        import inputs.unstable {
+          inherit system;
+          config = {
+            allowUnfree = true;
+          }
+          // extraConfig;
+        };
+
       mkDarwinConfig =
         {
           system ? "aarch64-darwin",
@@ -54,7 +64,12 @@
           inherit system;
           modules = baseModules ++ extraModules;
           specialArgs = {
-            inherit self inputs nixpkgs;
+            inherit
+              self
+              inputs
+              nixpkgs
+              mkUnstablePkgs
+              ;
           };
         };
 
@@ -75,7 +90,13 @@
           inherit system;
           modules = baseModules ++ hardwareModules ++ extraModules;
           specialArgs = {
-            inherit self inputs nixpkgs;
+            inherit
+              self
+              inputs
+              nixpkgs
+              mkUnstablePkgs
+              ;
+            unstablePkgs = mkUnstablePkgs system { };
           };
         };
 
@@ -106,7 +127,13 @@
             config = import ./modules/config.nix;
           };
           extraSpecialArgs = {
-            inherit self inputs nixpkgs;
+            inherit
+              self
+              inputs
+              nixpkgs
+              mkUnstablePkgs
+              ;
+            unstablePkgs = mkUnstablePkgs system { };
           };
           modules = baseModules ++ extraModules;
         };

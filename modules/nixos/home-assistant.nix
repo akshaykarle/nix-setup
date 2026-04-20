@@ -2,15 +2,9 @@
   config,
   lib,
   pkgs,
-  inputs,
+  unstablePkgs,
   ...
 }:
-let
-  unstablePkgs = import inputs.unstable {
-    system = "x86_64-linux";
-    config.allowUnfree = true;
-  };
-in
 {
   # Home Assistant — imperative config management initially
   # Existing YAML config is copied to /var/lib/hass and managed manually.

@@ -2,16 +2,12 @@
   config,
   lib,
   pkgs,
-  inputs,
+  mkUnstablePkgs,
   ...
 }:
 let
-  unstablePkgs = import inputs.unstable {
-    system = "x86_64-linux";
-    config = {
-      allowUnfree = true;
-      permittedInsecurePackages = [ "openclaw-2026.4.2" ];
-    };
+  unstablePkgs = mkUnstablePkgs pkgs.stdenv.hostPlatform.system {
+    permittedInsecurePackages = [ "openclaw-2026.4.2" ];
   };
 in
 {
