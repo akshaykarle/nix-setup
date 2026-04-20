@@ -4,6 +4,17 @@
   pkgs,
   ...
 }:
+let
+  cavemanMarketplace = {
+    caveman = {
+      source = {
+        source = "github";
+        repo = "JuliusBrussee/caveman";
+        ref = "v1.6.0";
+      };
+    };
+  };
+in
 {
   imports = [ ./1password.nix ];
   # Required to get the fonts installed by home-manager to be picked up by OS.
@@ -92,6 +103,10 @@
       claude-personal-settings = {
         target = ".claude-personal/settings.json";
         text = builtins.toJSON {
+          extraKnownMarketplaces = cavemanMarketplace;
+          enabledPlugins = {
+            "caveman@caveman" = true;
+          };
           statusLine = {
             type = "command";
             command = "${config.home.homeDirectory}/.claude-personal/statusline-command.fish";
@@ -106,6 +121,10 @@
       claude-sahaj-settings = {
         target = ".claude-sahaj/settings.json";
         text = builtins.toJSON {
+          extraKnownMarketplaces = cavemanMarketplace;
+          enabledPlugins = {
+            "caveman@caveman" = true;
+          };
           statusLine = {
             type = "command";
             command = "${config.home.homeDirectory}/.claude-sahaj/statusline-command.fish";
@@ -120,8 +139,10 @@
       claude-client-settings = {
         target = ".claude-client/settings.json";
         text = builtins.toJSON {
+          extraKnownMarketplaces = cavemanMarketplace;
           enabledPlugins = {
             "csharp-lsp@claude-plugins-official" = true;
+            "caveman@caveman" = true;
           };
           alwaysThinkingEnabled = true;
           statusLine = {
