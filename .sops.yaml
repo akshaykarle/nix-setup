@@ -3,7 +3,7 @@
 #   nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
 # Then add the resulting age public key below.
 keys:
-  - &asus REPLACE_WITH_ASUS_HOST_AGE_PUBLIC_KEY
+  - &asus age19jf9p3pkgrwm0suh4mvqu50s84p6269324jhaulypmk7hd7v5yasgggs4s
   - &intel REPLACE_WITH_INTEL_HOST_AGE_PUBLIC_KEY
 
 creation_rules:
