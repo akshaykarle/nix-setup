@@ -1,21 +1,27 @@
 { pkgs, ... }:
-{
-  home.file = {
-    pi-settings = {
-      target = ".pi/agent/settings.json";
-      text = builtins.toJSON {
-        defaultProvider = "anthropic";
-        defaultModel = "claude-sonnet-4-6";
-        packages = [ "git:github.com/akshaykarle/pi-tools" ];
-      };
+let
+  mkPiConfig = name: extraSettings: {
+    "pi-${name}-settings" = {
+      target = ".pi-${name}/agent/settings.json";
+      text = builtins.toJSON (
+        {
+          defaultProvider = "anthropic";
+          defaultModel = "claude-sonnet-4-6";
+          packages = [ "git:github.com/akshaykarle/pi-tools" ];
+        }
+        // extraSettings
+      );
     };
-    pi-agents-md = {
+    "pi-${name}-agents-md" = {
       source = ../../dotfiles/pi-agents.md;
-      target = ".pi/agent/AGENTS.md";
+      target = ".pi-${name}/agent/AGENTS.md";
     };
-    pi-sandbox-profile = pkgs.lib.mkIf pkgs.stdenv.isDarwin {
+    "pi-${name}-sandbox-profile" = pkgs.lib.mkIf pkgs.stdenv.isDarwin {
       source = ../../dotfiles/pi-sandbox.sb;
-      target = ".pi/agent/pi-sandbox.sb";
+      target = ".pi-${name}/agent/pi-sandbox.sb";
     };
   };
+in
+{
+  home.file = mkPiConfig "personal" { } // mkPiConfig "sahaj" { } // mkPiConfig "client" { };
 }

@@ -50,6 +50,12 @@
       generate-new-mac-address = "openssl rand -hex 6 | sed 's/(..)/1:/g; s/.$//' | xargs sudo ifconfig $1 ether";
       global-search-replace = "ack $1 -l --print0 | xargs -0 sed -i '' \"s/$1/$2/g\"";
       pi-sandboxed = ''
+        if not set -q PI_CODING_AGENT_DIR
+          echo "ERROR: PI_CODING_AGENT_DIR is not set. Use pi-personal, pi-sahaj, or pi-client." >&2
+          return 1
+        end
+        set -l pi_dir $PI_CODING_AGENT_DIR
+
         # Secret env vars to strip from the pi process
         set -l secret_vars \
           ANTHROPIC_API_KEY OPENAI_API_KEY GITHUB_TOKEN GH_TOKEN \
@@ -69,7 +75,7 @@
             --proc /proc \
             --tmpfs /tmp \
             --tmpfs $HOME \
-            --bind $HOME/.pi $HOME/.pi \
+            --bind $pi_dir $pi_dir \
             --ro-bind $HOME/.gitconfig $HOME/.gitconfig \
             --ro-bind $HOME/.gitignore $HOME/.gitignore \
             --bind (pwd) (pwd) \
@@ -94,7 +100,7 @@
             end
           end
 
-          set -l sandbox_profile "$HOME/.pi/agent/pi-sandbox.sb"
+          set -l sandbox_profile "$pi_dir/agent/pi-sandbox.sb"
           if test -f $sandbox_profile
             exec env $env_args sandbox-exec -D "CWD=(pwd)" -f $sandbox_profile pi $argv
           else
@@ -117,7 +123,9 @@
       claude-personal = "CLAUDE_CONFIG_DIR=~/.claude-personal claude";
       claude-sahaj = "CLAUDE_CONFIG_DIR=~/.claude-sahaj claude";
       claude-client = "CLAUDE_CONFIG_DIR=~/.claude-client claude";
-      pi = "pi-sandboxed";
+      pi-personal = "PI_CODING_AGENT_DIR=~/.pi-personal pi-sandboxed";
+      pi-sahaj = "PI_CODING_AGENT_DIR=~/.pi-sahaj pi-sandboxed";
+      pi-client = "PI_CODING_AGENT_DIR=~/.pi-client pi-sandboxed";
     };
   };
 }
