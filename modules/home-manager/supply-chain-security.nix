@@ -2,7 +2,7 @@
 {
   home.file = {
     npmrc = {
-      target = ".npmrc";
+      target = ".config/npm/npmrc";
       text = ''
         # Supply chain security
         min-release-age=7d

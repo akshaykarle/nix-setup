@@ -41,6 +41,9 @@
       # Go module security: ensure checksum verification is never accidentally disabled
       set -gx GONOSUMCHECK ""
       set -gx GOFLAGS "-mod=readonly"
+
+      # npm: use nix-managed global config; leave ~/.npmrc writable for `npm login`
+      set -gx NPM_CONFIG_GLOBALCONFIG "$HOME/.config/npm/npmrc"
     '';
     functions = {
       wifi-password-finder = "security find-generic-password -gwa $1";
