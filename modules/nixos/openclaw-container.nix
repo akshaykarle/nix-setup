@@ -7,7 +7,7 @@
 }:
 let
   unstablePkgs = mkUnstablePkgs pkgs.stdenv.hostPlatform.system {
-    permittedInsecurePackages = [ "openclaw" ];
+    allowInsecurePredicate = pkg: builtins.elem (lib.getName pkg) [ "openclaw" ];
   };
 in
 {
