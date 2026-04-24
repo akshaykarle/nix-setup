@@ -6,7 +6,7 @@
       text = builtins.toJSON {
         defaultProvider = "anthropic";
         defaultModel = "claude-sonnet-4-6";
-        packages = [ "npm:@akshaykarle/pi-tools" ];
+        packages = [ "git:github.com/akshaykarle/pi-tools" ];
       };
     };
     pi-agents-md = {
