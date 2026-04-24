@@ -90,6 +90,7 @@
   };
 
   programs = {
+    man.generateCaches = false;
     home-manager = {
       enable = true;
       # path = "$HOME/.config/nixpkgs/modules/home-manager";
