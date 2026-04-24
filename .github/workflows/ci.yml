@@ -15,7 +15,7 @@ jobs:
     name: Validate flake.lock
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: DeterminateSystems/flake-checker-action@main
 
   check-linux:
@@ -42,7 +42,7 @@ jobs:
             /usr/share/swift
           sudo docker image prune --all --force
           df -h /
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Run flake checks (x86_64-linux)
@@ -53,7 +53,7 @@ jobs:
     runs-on: macos-15
     needs: [flake-check]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: DeterminateSystems/nix-installer-action@main
         with:
           extra-conf: |
