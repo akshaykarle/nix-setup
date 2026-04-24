@@ -7,7 +7,7 @@
 }:
 let
   unstablePkgs = mkUnstablePkgs pkgs.stdenv.hostPlatform.system {
-    permittedInsecurePackages = [ "openclaw-2026.4.2" ];
+    permittedInsecurePackages = [ "openclaw" ];
   };
 in
 {
