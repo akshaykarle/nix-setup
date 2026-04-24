@@ -102,7 +102,7 @@
 
           set -l sandbox_profile "$pi_dir/agent/pi-sandbox.sb"
           if test -f $sandbox_profile
-            exec env $env_args sandbox-exec -D "CWD=(pwd)" -f $sandbox_profile pi $argv
+            exec env $env_args sandbox-exec -D "CWD=(pwd)" -D "HOME=$HOME" -f $sandbox_profile pi $argv
           else
             echo "WARNING: Seatbelt profile not found, running pi without OS sandbox"
             exec env $env_args pi $argv
