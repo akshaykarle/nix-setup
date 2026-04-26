@@ -16,10 +16,6 @@ let
       source = ../../dotfiles/pi-agents.md;
       target = ".pi-${name}/agent/AGENTS.md";
     };
-    "pi-${name}-sandbox-profile" = pkgs.lib.mkIf pkgs.stdenv.isDarwin {
-      source = ../../dotfiles/pi-sandbox.sb;
-      target = ".pi-${name}/agent/pi-sandbox.sb";
-    };
   };
 in
 {
