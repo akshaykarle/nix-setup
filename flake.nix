@@ -23,6 +23,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # secrets management
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # editor plugins
     vundle = {
       url = "github:gmarik/Vundle.vim";
@@ -92,6 +98,7 @@
           hardwareModules,
           baseModules ? [
             home-manager.nixosModules.home-manager
+            inputs.sops-nix.nixosModules.sops
             ./modules/nixos
           ],
           extraModules ? [ ],

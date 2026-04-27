@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 {
 
-  imports = [ ../common.nix ];
+  imports = [
+    ../common.nix
+    ./sops.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -45,7 +48,7 @@
           "wheel"
           "networkmanager"
         ];
-        hashedPassword = config.user.hashedPassword;
+        # Password managed via sops-nix (see sops.nix)
       };
     };
   };
