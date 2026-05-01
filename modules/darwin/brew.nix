@@ -30,8 +30,6 @@
       "watch"
       "nmap"
       "wget"
-      # required for fish- https://github.com/franciscolourenco/done
-      "terminal-notifier"
       {
         name = "emacs-plus";
         start_service = true;

@@ -12,10 +12,6 @@
         src = colored-man-pages.src;
       }
       {
-        name = "done";
-        src = done.src;
-      }
-      {
         name = "z";
         src = z.src;
       }
