@@ -7,7 +7,7 @@ let
         {
           defaultProvider = "anthropic";
           defaultModel = "claude-sonnet-4-6";
-          packages = [ "git:github.com/akshaykarle/pi-tools" ];
+          packages = [ "@akshaykarle/pi-tools" ];
         }
         // extraSettings
       );
@@ -15,10 +15,6 @@ let
     "pi-${name}-agents-md" = {
       source = ../../dotfiles/pi-agents.md;
       target = ".pi-${name}/agent/AGENTS.md";
-    };
-    "pi-${name}-sandbox-profile" = pkgs.lib.mkIf pkgs.stdenv.isDarwin {
-      source = ../../dotfiles/pi-sandbox.sb;
-      target = ".pi-${name}/agent/pi-sandbox.sb";
     };
   };
 in

@@ -24,6 +24,7 @@ in
     unstablePkgs.claude-code
     claude-monitor
     unstablePkgs.pi-coding-agent
+    nodejs_22
 
     spotify
     slack
