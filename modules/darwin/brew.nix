@@ -67,7 +67,7 @@
       "dropbox"
       "flycut"
       "iterm2"
-      # "ngrok"
+      "ngrok"
       "openoffice"
       "rectangle"
       "steam"
