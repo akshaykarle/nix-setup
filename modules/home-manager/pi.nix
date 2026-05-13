@@ -7,7 +7,7 @@ let
         {
           defaultProvider = "anthropic";
           defaultModel = "claude-sonnet-4-6";
-          packages = [ "@akshaykarle/pi-tools" ];
+          packages = [ "npm:@akshaykarle/pi-tools" ];
         }
         // extraSettings
       );

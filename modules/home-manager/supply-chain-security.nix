@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  home.sessionPath = [ "$HOME/.npm-global/bin" ];
+
   home.file = {
     npmrc = {
       target = ".config/npm/npmrc";
@@ -12,6 +14,9 @@
         package-lock=true
         registry=https://registry.npmjs.org/
         email=npm requires email to be set but doesn't use the value
+
+        # Writable global install location (nix store is read-only)
+        prefix=''${HOME}/.npm-global
       ''
       + pkgs.lib.optionalString pkgs.stdenv.isDarwin ''
 
