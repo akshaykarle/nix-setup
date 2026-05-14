@@ -38,6 +38,7 @@
       tmux
       nix-output-monitor
       tailscale
+      gh
 
       # IDEs & editors
       (if pkgs.stdenv.isDarwin then emacs.override { withNativeCompilation = false; } else emacs)
