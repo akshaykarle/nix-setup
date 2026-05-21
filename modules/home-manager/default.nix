@@ -7,6 +7,8 @@
 }:
 {
   imports = [
+    inputs.nixvim.homeModules.nixvim
+    ./nvim.nix
     ./1password.nix
     ./claude.nix
     ./fish.nix
