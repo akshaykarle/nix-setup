@@ -46,6 +46,9 @@
       (if pkgs.stdenv.isDarwin then emacs.override { withNativeCompilation = false; } else emacs)
       vim
 
+      # fonts
+      nerd-fonts.sauce-code-pro # Nerd Font variant of Source Code Pro ("SauceCodePro") — required for nvim icons
+
       # languages & tools related to them
       cmake
       ctags
