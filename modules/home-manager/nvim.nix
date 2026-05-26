@@ -114,6 +114,10 @@
       treesitter = {
         enable = true;
         settings.highlight.enable = true;
+        settings.ensureInstalled = [
+          "markdown"
+          "markdown_inline"
+        ];
       };
 
       # ── Completion ─────────────────────────────────────────────────────────
@@ -205,6 +209,15 @@
 
       # ── TODO highlighting ──────────────────────────────────────────────────
       todo-comments.enable = true;
+
+      # ── Markdown rendering ─────────────────────────────────────────────────
+      # Rich in-editor rendering of markdown files (headings, code blocks, tables…)
+      render-markdown = {
+        enable = true;
+        settings = {
+          file_types = [ "markdown" ];
+        };
+      };
     };
 
     # ── Keymaps ──────────────────────────────────────────────────────────────
