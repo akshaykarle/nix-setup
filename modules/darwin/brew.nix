@@ -6,6 +6,7 @@
       autoUpdate = true;
       cleanup = "zap"; # Uninstall all programs not declared
       upgrade = true;
+      extraFlags = [ "--force" ]; # Required by Homebrew 4.x+ when using --cleanup
     };
     global = {
       brewfile = true;
