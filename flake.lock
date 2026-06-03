@@ -268,11 +268,11 @@
     "spacemacs": {
       "flake": false,
       "locked": {
-        "lastModified": 1779652481,
-        "narHash": "sha256-Yt7pZ/EgxaJhbain1lIV4xTtXztSCuJGFAdeONDJN2E=",
+        "lastModified": 1780421525,
+        "narHash": "sha256-ZiXdELtfjwbrauJmnTYw/lB69EPUxZX+vtX+XFBWFu4=",
         "owner": "syl20bnr",
         "repo": "spacemacs",
-        "rev": "a46fa81690fe3bae2198a470a8481ac091aae090",
+        "rev": "a1b98eb7d303226be60a0afe3025fc87d67be23b",
         "type": "github"
       },
       "original": {
@@ -329,11 +329,11 @@
     },
     "unstable": {
       "locked": {
-        "lastModified": 1779560665,
-        "narHash": "sha256-tpyBcxPpcQb8ukyNF7DoCwfSY3VPsxHoYwj00Cayv5o=",
+        "lastModified": 1780243769,
+        "narHash": "sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+        "rev": "331800de5053fcebacf6813adb5db9c9dca22a0c",
         "type": "github"
       },
       "original": {
