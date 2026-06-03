@@ -58,6 +58,9 @@
       pi-personal = "PI_CODING_AGENT_DIR=~/.pi-personal pi";
       pi-sahaj = "PI_CODING_AGENT_DIR=~/.pi-sahaj pi";
       pi-client = "PI_CODING_AGENT_DIR=~/.pi-client pi";
+      claude-desktop-personal = ''open -n -a "Claude" --args --user-data-dir="$HOME/Library/Application Support/Claude-Personal"'';
+      claude-desktop-sahaj = ''open -n -a "Claude" --args --user-data-dir="$HOME/Library/Application Support/Claude-Sahaj"'';
+      claude-desktop-client = ''open -n -a "Claude" --args --user-data-dir="$HOME/Library/Application Support/Claude-Client"'';
     };
   };
 }
