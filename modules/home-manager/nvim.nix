@@ -34,8 +34,8 @@
     extraPackages = with pkgs; [
       black # Python formatter
       ruff # Python linter
-      nodePackages.prettier # JS/TS/JSON/YAML/MD formatter
-      nodePackages.eslint # JS/TS linter
+      prettier # JS/TS/JSON/YAML/MD formatter
+      eslint # JS/TS linter
       shellcheck # Shell linter
       shfmt # Shell formatter
       # nixfmt-rfc-style is already in global home.packages — no need to duplicate here
