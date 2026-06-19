@@ -19,7 +19,8 @@ in
     unstablePkgs.colima
     nmap
     tmate
-    visidata
+    # visidata disabled: arrow-cpp-23.0.0 test failure in nixpkgs 26.05 (TestAzuriteGeneric.NormalizePath)
+    # visidata
 
     unstablePkgs.claude-code
     claude-monitor
