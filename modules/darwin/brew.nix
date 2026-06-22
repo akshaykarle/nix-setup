@@ -65,6 +65,7 @@
       }
       # Standard apps - manual updates preferred
       "claude"
+      "google-drive"
       "dropbox"
       "flycut"
       "iterm2"
