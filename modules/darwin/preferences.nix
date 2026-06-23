@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   system.defaults = {
     # login window settings
@@ -44,18 +44,59 @@
       show-process-indicators = true;
       orientation = "bottom";
       mru-spaces = false;
+      # only these apps pinned in the dock, in this order (Finder is implicit far-left)
+      persistent-apps = [
+        "/System/Applications/Calculator.app"
+        "/Applications/Brave Browser.app"
+        "/System/Applications/Calendar.app"
+        "/Applications/iTerm.app"
+        "/Applications/Claude.app"
+        "/System/Applications/System Settings.app"
+        "/Users/${config.user.name}/Applications/Home Manager Apps/Spotify.app"
+        "/Applications/Signal.app"
+      ];
+      persistent-others = [ ];
     };
 
     NSGlobalDomain = {
       # allow key repeat
       ApplePressAndHoldEnabled = false;
-      # delay before repeating keystrokes
-      InitialKeyRepeat = 13;
+      # delay before repeating keystrokes (minimal)
+      InitialKeyRepeat = 5;
       # delay between repeated keystrokes upon holding a key
       KeyRepeat = 1;
       AppleShowAllExtensions = true;
       AppleShowScrollBars = "Automatic";
       "com.apple.trackpad.enableSecondaryClick" = true;
+      # enable tap to click globally
+      "com.apple.mouse.tapBehavior" = 1;
+    };
+  };
+
+  # input sources are not exposed as a nix-darwin option, so set them directly
+  system.defaults.CustomUserPreferences = {
+    "com.apple.HIToolbox" = {
+      AppleEnabledInputSources = [
+        {
+          InputSourceKind = "Keyboard Layout";
+          "KeyboardLayout ID" = 250;
+          "KeyboardLayout Name" = "British-PC";
+        }
+        {
+          InputSourceKind = "Keyboard Layout";
+          "KeyboardLayout ID" = 2;
+          "KeyboardLayout Name" = "British";
+        }
+        {
+          InputSourceKind = "Keyboard Layout";
+          "KeyboardLayout ID" = 0;
+          "KeyboardLayout Name" = "U.S.";
+        }
+      ];
+    };
+    # show the input-source menu in the top-right menu bar
+    "com.apple.TextInputMenu" = {
+      visible = true;
     };
   };
 
