@@ -11,7 +11,10 @@
     echo "Setting Neovide as default text editor via duti..."
     ${pkgs.duti}/bin/duti -s com.neovide.neovide public.plain-text all
     ${pkgs.duti}/bin/duti -s com.neovide.neovide public.source-code all
-    ${pkgs.duti}/bin/duti -s com.neovide.neovide public.data all
+    ${pkgs.duti}/bin/duti -s com.neovide.neovide public.json all
+    ${pkgs.duti}/bin/duti -s com.neovide.neovide net.daringfireball.markdown all
+    ${pkgs.duti}/bin/duti -s com.neovide.neovide public.xml all
+    ${pkgs.duti}/bin/duti -s com.neovide.neovide com.netscape.javascript-source all
   '';
 
   # environment setup
