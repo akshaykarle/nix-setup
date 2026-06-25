@@ -62,7 +62,7 @@
       # allow key repeat
       ApplePressAndHoldEnabled = false;
       # delay before repeating keystrokes (minimal)
-      InitialKeyRepeat = 5;
+      InitialKeyRepeat = 10;
       # delay between repeated keystrokes upon holding a key
       KeyRepeat = 1;
       AppleShowAllExtensions = true;
