@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.nixvim = {
     enable = true;
@@ -17,6 +17,7 @@
       hidden = true;
       background = "dark";
       autoindent = true;
+      clipboard = "unnamedplus"; # use system clipboard on both macOS and Linux
       backspace = "indent,eol,start"; # from vimrc: set backspace=indent,eol,start
       showcmd = true; # from vimrc: set showcmd
     };
