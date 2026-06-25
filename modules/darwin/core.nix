@@ -5,6 +5,15 @@
   ...
 }:
 {
+  environment.systemPackages = [ pkgs.duti ];
+
+  system.activationScripts.postActivation.text = ''
+    echo "Setting Neovide as default text editor via duti..."
+    ${pkgs.duti}/bin/duti -s com.neovide.neovide public.plain-text all
+    ${pkgs.duti}/bin/duti -s com.neovide.neovide public.source-code all
+    ${pkgs.duti}/bin/duti -s com.neovide.neovide public.data all
+  '';
+
   # environment setup
   environment = {
     etc = {

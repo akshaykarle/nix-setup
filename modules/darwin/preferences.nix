@@ -53,6 +53,7 @@
         "/Applications/Claude.app"
         "/System/Applications/System Settings.app"
         "/Users/${config.user.name}/Applications/Home Manager Apps/Spotify.app"
+        "/Users/${config.user.name}/Applications/Home Manager Apps/Neovide.app"
         "/Applications/Signal.app"
       ];
       persistent-others = [ ];
