@@ -31,20 +31,8 @@
       "watch"
       "nmap"
       "wget"
-      {
-        name = "emacs-plus";
-        start_service = true;
-        args = [
-          "with-spacemacs-icon"
-        ];
-      }
     ];
 
-    taps = [
-      "homebrew/bundle"
-      "homebrew/services"
-      "d12frosted/emacs-plus"
-    ];
     casks = [
       # Security-focused apps - keep updated
       {

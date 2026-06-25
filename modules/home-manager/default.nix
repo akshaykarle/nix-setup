@@ -2,6 +2,7 @@
   self,
   inputs,
   config,
+  lib,
   pkgs,
   ...
 }:
@@ -22,51 +23,42 @@
   home = {
     stateVersion = "23.11";
 
-    packages = with pkgs; [
-      # standard toolset
-      curl
-      diffutils
-      findutils
-      gnutar
-      gawk
-      git
-      jq
-      openssl
-      ripgrep
-      wget
-      unixtools.watch
+    packages =
+      with pkgs;
+      [
+        # standard toolset
+        curl
+        diffutils
+        findutils
+        gnutar
+        gawk
+        git
+        jq
+        openssl
+        ripgrep
+        wget
+        unixtools.watch
 
-      # helpful tools
-      tmux
-      nix-output-monitor
-      tailscale
-      gh
+        # helpful tools
+        tmux
+        nix-output-monitor
+        tailscale
+        gh
 
-      # IDEs & editors
-      (if pkgs.stdenv.isDarwin then emacs.override { withNativeCompilation = false; } else emacs)
-      vim
+        # fonts
+        nerd-fonts.sauce-code-pro # Nerd Font variant of Source Code Pro ("SauceCodePro") — required for nvim icons
 
-      # fonts
-      nerd-fonts.sauce-code-pro # Nerd Font variant of Source Code Pro ("SauceCodePro") — required for nvim icons
-
-      # languages & tools related to them
-      cmake
-      ctags
-      nixfmt-rfc-style
-      nixpkgs-fmt
-    ];
+        # languages & tools related to them
+        cmake
+        ctags
+        nixfmt-rfc-style
+        nixpkgs-fmt
+      ]
+      ++ lib.optionals pkgs.stdenv.isDarwin [
+        neovide
+      ];
 
     file = {
-      vundle = {
-        source = inputs.vundle;
-        target = ".vim/bundle/Vundle.vim";
-        recursive = true;
-      };
-      emacs_d = {
-        source = inputs.spacemacs;
-        target = ".emacs.d";
-        recursive = true;
-      };
       gitignore = {
         source = ../../dotfiles/gitignore.symlink;
         target = ".gitignore";
@@ -75,17 +67,9 @@
         source = ../../dotfiles/gitconfig.symlink;
         target = ".gitconfig";
       };
-      spacemacs = {
-        source = ../../dotfiles/spacemacs.symlink;
-        target = ".spacemacs";
-      };
       tmux = {
         source = ../../dotfiles/tmux.conf.symlink;
         target = ".tmux.conf";
-      };
-      vimrc = {
-        source = ../../dotfiles/vimrc.symlink;
-        target = ".vimrc";
       };
       lein = {
         source = ../../dotfiles/lein.symlink;

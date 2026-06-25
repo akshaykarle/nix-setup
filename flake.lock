@@ -169,10 +169,8 @@
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "sops-nix": "sops-nix",
-        "spacemacs": "spacemacs",
         "stable": "stable",
-        "unstable": "unstable",
-        "vundle": "vundle"
+        "unstable": "unstable"
       }
     },
     "sops-nix": {
@@ -192,22 +190,6 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
-        "type": "github"
-      }
-    },
-    "spacemacs": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1781466014,
-        "narHash": "sha256-0XCfmEwdhvN/8Dl8rwPytInKscgT5D69Nz84WF6EiR0=",
-        "owner": "syl20bnr",
-        "repo": "spacemacs",
-        "rev": "9b5ae61af9a7dee15ca0ba0623cee19045e4dde0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "syl20bnr",
-        "repo": "spacemacs",
         "type": "github"
       }
     },
@@ -255,22 +237,6 @@
         "owner": "nixos",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "vundle": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1722318783,
-        "narHash": "sha256-DnIqX2WxnOdWRDTsjXlkTPqKuXXFag5ky2UImG7X0FE=",
-        "owner": "gmarik",
-        "repo": "Vundle.vim",
-        "rev": "5548a1a937d4e72606520c7484cd384e6c76b565",
-        "type": "github"
-      },
-      "original": {
-        "owner": "gmarik",
-        "repo": "Vundle.vim",
         "type": "github"
       }
     }
