@@ -233,6 +233,10 @@
           system = "aarch64-darwin";
           extraModules = [ ./profiles/darwin.nix ];
         };
+        "akshay.karle@aarch64-darwin" = mkDarwinConfig {
+          system = "aarch64-darwin";
+          extraModules = [ ./profiles/client-darwin.nix ];
+        };
       };
 
       nixosConfigurations = {
