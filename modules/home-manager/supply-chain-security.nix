@@ -7,7 +7,7 @@
       target = ".config/npm/npmrc";
       text = ''
         # Supply chain security
-        min-release-age=7d
+        min-release-age=7
         ignore-scripts=true
         save-exact=true
         audit=true
