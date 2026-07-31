@@ -5,6 +5,8 @@
   ...
 }:
 let
+  cfg = config.claude;
+
   cavemanMarketplace = {
     caveman = {
       source = {
@@ -96,20 +98,41 @@ let
   };
 in
 {
-  home.file =
-    mkClaudeConfig "personal" { }
-    // mkClaudeConfig "sahaj" { }
-    // mkClaudeConfig "client" {
-      enabledPlugins = {
-        "csharp-lsp@claude-plugins-official" = true;
-        "caveman@caveman" = true;
-      };
-      alwaysThinkingEnabled = true;
-    }
-    // mkClaudeDesktopConfig "Personal" { }
-    // mkClaudeDesktopConfig "Sahaj" { }
-    // mkClaudeDesktopConfig "Client" { }
-    // mkClaudeDesktopApp "Personal"
-    // mkClaudeDesktopApp "Sahaj"
-    // mkClaudeDesktopApp "Client";
+  options.claude.profiles = lib.mkOption {
+    type = lib.types.listOf lib.types.str;
+    default = [
+      "personal"
+      "sahaj"
+      "client"
+    ];
+    description = ''
+      Which Claude profiles to configure. Each entry generates config files
+      under ~/.claude-<profile>/ and an Application bundle in ~/Applications/.
+      Valid values: "personal", "sahaj", "client".
+    '';
+  };
+
+  config.home.file = lib.mkMerge (
+    lib.optionals (lib.elem "personal" cfg.profiles) [
+      (mkClaudeConfig "personal" { })
+      (mkClaudeDesktopConfig "Personal" { })
+      (mkClaudeDesktopApp "Personal")
+    ]
+    ++ lib.optionals (lib.elem "sahaj" cfg.profiles) [
+      (mkClaudeConfig "sahaj" { })
+      (mkClaudeDesktopConfig "Sahaj" { })
+      (mkClaudeDesktopApp "Sahaj")
+    ]
+    ++ lib.optionals (lib.elem "client" cfg.profiles) [
+      (mkClaudeConfig "client" {
+        enabledPlugins = {
+          "csharp-lsp@claude-plugins-official" = true;
+          "caveman@caveman" = true;
+        };
+        alwaysThinkingEnabled = true;
+      })
+      (mkClaudeDesktopConfig "Client" { })
+      (mkClaudeDesktopApp "Client")
+    ]
+  );
 }
