@@ -5,6 +5,11 @@
   user.name = "akshay.karle";
   user.description = "Karle, Akshay (UK)";
 
+  # User was provisioned externally (corporate directory service).
+  # Override the default UID of 501 set in modules/darwin/core.nix to
+  # match the actual UID assigned by the corporate IdP.
+  user.uid = 1638495395;
+
   hm.claude.profiles = [ "client" ];
   hm.pi.profiles = [ "client" ];
 
