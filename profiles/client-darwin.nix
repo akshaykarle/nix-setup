@@ -1,6 +1,6 @@
 { ... }:
 {
-  networking.hostName = "EULONM17385";
+  networking.hostName = "EULONML17385";
 
   user.name = "akshay.karle";
   user.description = "Karle, Akshay (UK)";
