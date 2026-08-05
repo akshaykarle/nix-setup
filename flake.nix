@@ -191,6 +191,11 @@
             os = "darwin";
           })
           (mkChecks {
+            arch = "aarch64";
+            os = "darwin";
+            username = "akshay_karle";
+          })
+          (mkChecks {
             arch = "x86_64";
             os = "darwin";
           })
@@ -271,6 +276,10 @@
           username = "akshaykarle";
           system = "aarch64-darwin";
           extraModules = [ ./modules/home-manager/extras.nix ];
+        };
+        "akshay_karle@aarch64-darwin" = mkHomeConfig {
+          username = "akshay.karle";
+          system = "aarch64-darwin";
         };
       };
     };
