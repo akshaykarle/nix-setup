@@ -280,6 +280,7 @@
         "akshay_karle@aarch64-darwin" = mkHomeConfig {
           username = "akshay.karle";
           system = "aarch64-darwin";
+          extraModules = [ ./modules/home-manager/extras.nix ];
         };
       };
     };

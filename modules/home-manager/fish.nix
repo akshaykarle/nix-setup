@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, lib, ... }:
 {
   programs.fish = {
     enable = true;
@@ -46,21 +46,34 @@
       generate-new-mac-address = "openssl rand -hex 6 | sed 's/(..)/1:/g; s/.$//' | xargs sudo ifconfig $1 ether";
       global-search-replace = "ack $1 -l --print0 | xargs -0 sed -i '' \"s/$1/$2/g\"";
     };
-    shellAliases = {
-      g = "git";
-      d = "docker";
-      k = "kubectl";
-      tf = "terraform";
-      gr = "open (git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#http://#' -e 's@com:@com/@')| head -n1";
-      claude-personal = "CLAUDE_CONFIG_DIR=~/.claude-personal claude";
-      claude-sahaj = "CLAUDE_CONFIG_DIR=~/.claude-sahaj claude";
-      claude-client = "CLAUDE_CONFIG_DIR=~/.claude-client claude";
-      pi-personal = "PI_CODING_AGENT_DIR=~/.pi-personal pi";
-      pi-sahaj = "PI_CODING_AGENT_DIR=~/.pi-sahaj pi";
-      pi-client = "PI_CODING_AGENT_DIR=~/.pi-client pi";
-      claude-desktop-personal = ''open -n -a "Claude" --args --user-data-dir="$HOME/Library/Application Support/Claude-Personal"'';
-      claude-desktop-sahaj = ''open -n -a "Claude" --args --user-data-dir="$HOME/Library/Application Support/Claude-Sahaj"'';
-      claude-desktop-client = ''open -n -a "Claude" --args --user-data-dir="$HOME/Library/Application Support/Claude-Client"'';
-    };
+    shellAliases =
+      {
+        g = "git";
+        d = "docker";
+        k = "kubectl";
+        tf = "terraform";
+        gr = "open (git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#http://#' -e 's@com:@com/@')| head -n1";
+      }
+      // lib.optionalAttrs (lib.elem "personal" config.claude.profiles) {
+        claude-personal = "CLAUDE_CONFIG_DIR=~/.claude-personal claude";
+        claude-desktop-personal = ''open -n -a "Claude" --args --user-data-dir="$HOME/Library/Application Support/Claude-Personal"'';
+      }
+      // lib.optionalAttrs (lib.elem "sahaj" config.claude.profiles) {
+        claude-sahaj = "CLAUDE_CONFIG_DIR=~/.claude-sahaj claude";
+        claude-desktop-sahaj = ''open -n -a "Claude" --args --user-data-dir="$HOME/Library/Application Support/Claude-Sahaj"'';
+      }
+      // lib.optionalAttrs (lib.elem "client" config.claude.profiles) {
+        claude-client = "CLAUDE_CONFIG_DIR=~/.claude-client claude";
+        claude-desktop-client = ''open -n -a "Claude" --args --user-data-dir="$HOME/Library/Application Support/Claude-Client"'';
+      }
+      // lib.optionalAttrs (lib.elem "personal" config.pi.profiles) {
+        pi-personal = "PI_CODING_AGENT_DIR=~/.pi-personal pi";
+      }
+      // lib.optionalAttrs (lib.elem "sahaj" config.pi.profiles) {
+        pi-sahaj = "PI_CODING_AGENT_DIR=~/.pi-sahaj pi";
+      }
+      // lib.optionalAttrs (lib.elem "client" config.pi.profiles) {
+        pi-client = "PI_CODING_AGENT_DIR=~/.pi-client pi";
+      };
   };
 }
