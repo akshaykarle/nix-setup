@@ -10,6 +10,7 @@
   # match the actual UID assigned by the corporate IdP.
   user.uid = 1638495395;
 
+  hm.imports = [ ../modules/home-manager/extras.nix ];
   hm.claude.profiles = [ "client" ];
   hm.pi.profiles = [ "client" ];
 
