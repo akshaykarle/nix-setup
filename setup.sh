@@ -14,6 +14,17 @@ if [[ ! -f $NIX_CONF_PATH/nix.conf ]] || ! grep "experimental-features" <"$NIX_C
   echo "experimental-features = nix-command flakes" | tee -a "$NIX_CONF_PATH"/nix.conf
 fi
 
+if uname -a | grep -q 'EULONML17385' && uname -a | grep -q 'arm64'; then
+  # Build a combined TLS cert bundle: system certs + any extra CAs in the login keychain.
+  # Without this, nix commands fail with curl error 60 / OpenSSL error 19.
+  _NIX_CERT_BUNDLE="$(mktemp /tmp/nix-certs.XXXXXX.pem)"
+  cat /etc/ssl/cert.pem >"$_NIX_CERT_BUNDLE"
+  /usr/bin/security export \
+    -k "$HOME/Library/Keychains/login.keychain-db" \
+    -t certs -f pemseq 2>/dev/null >>"$_NIX_CERT_BUNDLE" || true
+  export NIX_SSL_CERT_FILE="$_NIX_CERT_BUNDLE"
+fi
+
 # link current dir into nixpkgs
 ln -sf $(pwd) $HOME/.config/nixpkgs
 
