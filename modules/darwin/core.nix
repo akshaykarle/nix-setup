@@ -2,6 +2,7 @@
   inputs,
   config,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -47,6 +48,6 @@
 
   # Set the knownUsers so that the default shell works: https://github.com/LnL7/nix-darwin/issues/1237#issuecomment-2562230471 &
   # https://github.com/LnL7/nix-darwin/issues/1237#issuecomment-2562242340
-  users.users.${config.user.name}.uid = 501;
+  users.users.${config.user.name}.uid = lib.mkDefault 501;
   users.knownUsers = [ config.user.name ];
 }
