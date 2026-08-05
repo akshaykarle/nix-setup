@@ -50,6 +50,10 @@ if uname -a | grep -q 'EULONML17385' && uname -a | grep -q 'arm64'; then
 
   # Also set for this shell session
   export NIX_SSL_CERT_FILE=/etc/ssl/corp/nix-bundle.pem
+
+  # Set git http.sslCAInfo globally so git can fetch during darwin-rebuild switch
+  # (home-manager hasn't applied yet at this point, so ~/.config/git/config doesn't exist)
+  git config --global http.sslCAInfo /etc/ssl/corp/nix-bundle.pem
 fi
 # --- End corporate TLS cert bundle ---
 
