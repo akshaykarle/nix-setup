@@ -64,7 +64,7 @@ NIX_CMD="${1:-switch}"
 
 if [ -n "$(uname -a | grep 'EULONML17385' | grep 'arm64')" ]; then
   which brew >/dev/null || bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  sudo nix run --extra-experimental-features nix-command --extra-experimental-features flakes nix-darwin -- $NIX_CMD --flake '.#akshay.karle@aarch64-darwin'
+  sudo nix run --extra-experimental-features nix-command --extra-experimental-features flakes nix-darwin -- $NIX_CMD --flake '.#akshay_karle@aarch64-darwin'
 elif [ -n "$(uname -a | grep 'Darwin' | grep 'x86_64')" ]; then
   which brew >/dev/null || bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   sudo nix run --extra-experimental-features nix-command --extra-experimental-features flakes nix-darwin -- $NIX_CMD --flake '.#akshaykarle@x86_64-darwin'
