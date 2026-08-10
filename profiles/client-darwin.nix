@@ -20,6 +20,7 @@
   # Do NOT set http.sslVerify = false — that would disable SSL verification.
   hm.programs.git = {
     enable = true;
+    lfs.enable = true;
     extraConfig = {
       http.sslCAInfo = "/etc/ssl/corp/nix-bundle.pem";
     };
